@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -41,7 +43,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.camping.seoul.seoulcamp.R;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -107,6 +111,7 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
 
 
         name.setText(index.getNM());
+        Log.d("address",index.getADDR());
         address.setText(index.getADDR());
 
         /*strsite = index.get();
@@ -243,9 +248,34 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        Geocoder geocoder = new Geocoder(this);
+        String str=index.getADDR();
+        List<Address> addressList = null;
+        try {
+            // editText에 입력한 텍스트(주소, 지역, 장소 등)을 지오 코딩을 이용해 변환
+            addressList = geocoder.getFromLocationName(
+                    str, // 주소
+                    1); // 최대 검색 결과 개수
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        double latitude = addressList.get(0).getLatitude();
+        double longitude=addressList.get(0).getLongitude();
 
         CameraPosition cameraPosition = new CameraPosition.Builder().target(
-                new LatLng(y, x)).zoom(15).build();
+                new LatLng(latitude, longitude)).zoom(16).build();
+
+        LatLng point = new LatLng(latitude,longitude);
+        MarkerOptions mOptions2 = new MarkerOptions();
+        mOptions2.title("search result");
+        mOptions2.position(point);
+        // 마커 추가
+        googleMap.addMarker(mOptions2);
+
+
+
 
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 

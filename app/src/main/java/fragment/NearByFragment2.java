@@ -55,7 +55,7 @@ public class NearByFragment2 extends Fragment {
 
 
         for (int i = 0; i < tmp.size(); i++) {
-            PetspitalData beanClassForRecyclerView_contacts = new PetspitalData(tmp.get(i).getNM());
+            PetspitalData beanClassForRecyclerView_contacts = tmp.get(i);
             CampdataArrayList.add(beanClassForRecyclerView_contacts);
         }
 

@@ -68,14 +68,6 @@ public class RecycleAdapter_camplist extends RecyclerView.Adapter<RecycleAdapter
     public RecycleAdapter_camplist(Context mainActivityContacts, List<PetspitalData> moviesList) {
         this.CampdataList = moviesList;
         this.context = mainActivityContacts;
-        try {
-            tmp = new JsonParser().execute().get();
-            Log.d("Size", "" + tmp.size());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -101,45 +93,6 @@ public class RecycleAdapter_camplist extends RecyclerView.Adapter<RecycleAdapter
 
                 Intent i = new Intent(context, Camp_detail.class);
                 i.putExtra("index", (PetspitalData)movie);
-                /*switch (movie.getName()) {
-                    case "동물병원1":
-                        tmp.get("camp2018_1").setImage(image[0]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_1"));//parsing test
-                        break;
-                    case "동물병원2":
-                        tmp.get("camp2018_2").setImage(image[1]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_2"));//parsing test
-                        break;
-                    case "동물병원3":
-                        tmp.get("camp2018_3").setImage(image[2]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_3"));//parsing test
-                        break;
-                    case "동물병원4":
-                        tmp.get("camp2018_4").setImage(image[3]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_4"));//parsing test
-                        break;
-                    case "동물병원5":
-                        tmp.get("camp2018_5").setImage(image[4]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_5"));//parsing test
-                        break;
-                    case "동물병원6":
-                        tmp.get("camp2018_6").setImage(image[5]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_6"));//parsing test
-                        break;
-                    case "동물병원7":
-                        tmp.get("camp2018_7").setImage(image[6]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_7"));//parsing test
-                        break;
-                    case "동물병원8":
-                        tmp.get("camp2018_8").setImage(image[7]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_8"));//parsing test
-                        break;
-                    case "동물병원9":
-                        tmp.get("camp2018_9").setImage(image[8]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_9"));//parsing test
-                        break;
-                }
-*/
                 context.startActivity(i);
 
             }
