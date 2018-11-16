@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.camping.seoul.seoulcamp.Camp_detail;
 import com.camping.seoul.seoulcamp.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,9 +29,25 @@ import object.PetspitalData;
 public class RecycleAdapter_camplist extends RecyclerView.Adapter<RecycleAdapter_camplist.MyViewHolder> {
 
     Context context;
-    List<PetspitalData> CampdataList;
-    Map<String, PetspitalData> tmp;
+    private List<PetspitalData> CampdataList;
+    private ArrayList<PetspitalData> tmp;
     private int image = R.drawable.yeouido_detail;
+
+    public ArrayList<PetspitalData> getTmp() {
+        return tmp;
+    }
+
+    public void setTmp(ArrayList<PetspitalData> tmp) {
+        this.tmp = tmp;
+    }
+
+    public List<PetspitalData> getCampdataList() {
+        return CampdataList;
+    }
+
+    public void setCampdataList(List<PetspitalData> campdataList) {
+        CampdataList = campdataList;
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -74,7 +91,7 @@ public class RecycleAdapter_camplist extends RecyclerView.Adapter<RecycleAdapter
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final PetspitalData movie = CampdataList.get(position);
-
+        CampdataList.get(position).getNM();
         holder.name.setText(movie.getNM());
 
         //수정필요
@@ -83,6 +100,7 @@ public class RecycleAdapter_camplist extends RecyclerView.Adapter<RecycleAdapter
             public void onClick(View view) {
 
                 Intent i = new Intent(context, Camp_detail.class);
+                i.putExtra("index", (PetspitalData)movie);
                 /*switch (movie.getName()) {
                     case "동물병원1":
                         tmp.get("camp2018_1").setImage(image[0]);

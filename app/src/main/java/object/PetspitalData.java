@@ -215,4 +215,19 @@ public class PetspitalData implements Serializable {
     public void setDETAIL_STAT_NM(String DETAIL_STAT_NM) {
         this.DETAIL_STAT_NM = DETAIL_STAT_NM;
     }
+
+    @Override
+    public String toString() {
+        return "PetspitalData{" +
+                "ID='" + ID + '\'' +
+                ", NM='" + NM + '\'' +
+                ", ADDR_OLD='" + ADDR_OLD + '\'' +
+                ", ADDR='" + ADDR + '\'' +
+                ", STATE='" + STATE + '\'' +
+                ", TEL='" + TEL + '\'' +
+                ", XCODE=" + XCODE +
+                ", YCODE=" + YCODE +
+                ", PERMISSION_NO='" + PERMISSION_NO + '\'' +
+                '}';
+    }
 }

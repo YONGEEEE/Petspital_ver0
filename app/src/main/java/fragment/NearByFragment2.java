@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,11 @@ import android.view.ViewGroup;
 import com.camping.seoul.seoulcamp.R;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import adapter.RecycleAdapter_camplist;
+import apiParser.JsonParser;
 import object.CampData;
 import object.PetspitalData;
 
@@ -22,10 +26,9 @@ import object.PetspitalData;
 public class NearByFragment2 extends Fragment {
 
     View view;
-    private String name[] = {"동물병원1", "동물병원2", "동물병원3", "동물병원4", "동물병원5", "동물병원6", "동물병원7", "동물병원8", "동물병원9"};
     private int image[] = {R.drawable.yeouido_main, R.drawable.dducksome_main, R.drawable.sungdong_main, R.drawable.guro_main, R.drawable.nanji_main, R.drawable.noeul_main, R.drawable.seouldae_main, R.drawable.junglang_main, R.drawable.gangdong_main};
 
-
+    private ArrayList<PetspitalData> tmp;
     private ArrayList<PetspitalData> CampdataArrayList;
     private RecyclerView recyclerView;
     private RecycleAdapter_camplist mAdapter;
@@ -35,24 +38,33 @@ public class NearByFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_campmain, container, false);
 
-
+        try {
+            tmp = new JsonParser().execute().get();
+            Log.d("Size", "" + tmp.size());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        for(int i =  0 ; i < tmp.size() ; i++)
+        {
+           Log.d("tmp : ", tmp.get(i).toString());
+        }
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_property);
         CampdataArrayList = new ArrayList<>();
 
 
-        for (int i = 0; i < name.length; i++) {
-            PetspitalData beanClassForRecyclerView_contacts = new PetspitalData(name[i]);
+        for (int i = 0; i < tmp.size(); i++) {
+            PetspitalData beanClassForRecyclerView_contacts = new PetspitalData(tmp.get(i).getNM());
             CampdataArrayList.add(beanClassForRecyclerView_contacts);
         }
 
 
         mAdapter = new RecycleAdapter_camplist(getActivity(), CampdataArrayList);
-
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-
 
         return view;
 
