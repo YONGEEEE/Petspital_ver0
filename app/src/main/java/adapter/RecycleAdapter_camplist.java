@@ -31,7 +31,7 @@ public class RecycleAdapter_camplist extends RecyclerView.Adapter<RecycleAdapter
     Context context;
     private List<PetspitalData> CampdataList;
     private ArrayList<PetspitalData> tmp;
-    private int image = R.drawable.yeouido_detail;
+    private int image = R.drawable.hallym_hospital;
 
     public ArrayList<PetspitalData> getTmp() {
         return tmp;
@@ -85,6 +85,7 @@ public class RecycleAdapter_camplist extends RecyclerView.Adapter<RecycleAdapter
         final PetspitalData movie = CampdataList.get(position);
         CampdataList.get(position).getNM();
         holder.name.setText(movie.getNM());
+        holder.image.setImageResource(image);
 
         //수정필요
         holder.itemView.setOnClickListener(new View.OnClickListener() {
