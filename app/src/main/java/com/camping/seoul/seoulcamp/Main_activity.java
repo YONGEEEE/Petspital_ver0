@@ -25,11 +25,12 @@ import object.NowUser;
 import weather.WeatherInfo;
 import weather.WeatherInfo2;
 
-public class Main_activity  extends AppCompatActivity {
+public class Main_activity extends AppCompatActivity {
     FrameLayout frameLayout;
-    Button button_main,button_petspital;
+    Button button_main, button_petspital, button_add;
     LinearLayout layout;
     TextView txt_nickname;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,30 +55,50 @@ public class Main_activity  extends AppCompatActivity {
 
         frameLayout = (FrameLayout) findViewById(R.id.framelayout);
 
-        replace_fragment(new NearByFragment2());
+        replace_fragment(new NearByFragment());
 
         button_main = findViewById(R.id.btn_main);
         button_petspital = findViewById(R.id.btn_petspital);
+        button_add = findViewById(R.id.btn_add);
         layout = findViewById(R.id.layout_search);
 
-        txt_nickname.setText(NowUser.nickname+"님");
-        /*button_main.setOnClickListener(new View.OnClickListener() {
+        txt_nickname.setText(NowUser.nickname + "님");
+
+        button_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Main_activity.this, Add_pet_activity.class);
+                startActivityForResult(i, 1);
+            }
+        });
+        button_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replace_fragment(new NearByFragment());
-                layout.setVisibility(View.GONE);
+                layout.setVisibility(View.GONE); // 검색란
+                button_add.setVisibility(View.VISIBLE); // 추가
             }
         });
         button_petspital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replace_fragment(new NearByFragment2());
-                layout.setVisibility(View.VISIBLE);
+                layout.setVisibility(View.VISIBLE); // 검색란
+                button_add.setVisibility(View.GONE); // 추가
             }
-        });*/
+        });
+
+
     }
 
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+
+        }
+    }
 
 
     public void replace_fragment(Fragment fragment) {

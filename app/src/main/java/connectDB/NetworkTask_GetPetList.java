@@ -19,7 +19,7 @@ public class NetworkTask_GetPetList extends AsyncTask<String, Void, List<PetData
     @Override
     protected List<PetData> doInBackground(String... voids) {
         String url = "http://192.168.0.6:8080/Pet/GetPetList";
-        String queryurl = url + "?camp=" + voids[0];
+        String queryurl = url + "?userid=" + voids[0];
         String bodyStr = "";
 
         OkHttpClient client = new OkHttpClient();

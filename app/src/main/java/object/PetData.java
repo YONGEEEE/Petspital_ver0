@@ -5,28 +5,37 @@ import java.io.Serializable;
 public class PetData implements Serializable {
 
     private String userid;
-    private String petid;
     private String name;
-    private String age;
-    private String weight;
+    private int age;
+    private float weight;
     private String birth;
-    private String infrom;
+    private String inform;
     private String kind;
     private int flag; // 1: 강아지 0 : 고양이
+    private int sex; // 1 : 남자 0 : 여자
 
     public PetData() {
+
     }
 
-    public PetData(String userid, String petid, String name, String age, String weight, String birth, String infrom, String kind, int flag) {
+    public PetData(String userid , String name, int age, float weight, String inform) {
         this.userid = userid;
-        this.petid = petid;
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+        this.inform = inform;
+    }
+
+    public PetData(String userid, String name, int age, float weight, String birth, String inform, String kind, int flag, int sex) {
+        this.userid = userid;
         this.name = name;
         this.age = age;
         this.weight = weight;
         this.birth = birth;
-        this.infrom = infrom;
+        this.inform = inform;
         this.kind = kind;
         this.flag = flag;
+        this.sex = sex;
     }
 
     public String getUserid() {
@@ -37,13 +46,6 @@ public class PetData implements Serializable {
         this.userid = userid;
     }
 
-    public String getPetid() {
-        return petid;
-    }
-
-    public void setPetid(String petid) {
-        this.petid = petid;
-    }
 
     public String getName() {
         return name;
@@ -53,19 +55,19 @@ public class PetData implements Serializable {
         this.name = name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public String getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
@@ -77,12 +79,12 @@ public class PetData implements Serializable {
         this.birth = birth;
     }
 
-    public String getInfrom() {
-        return infrom;
+    public String getInform() {
+        return inform;
     }
 
-    public void setInfrom(String infrom) {
-        this.infrom = infrom;
+    public void setInform(String inform) {
+        this.inform = inform;
     }
 
     public String getKind() {
@@ -99,5 +101,28 @@ public class PetData implements Serializable {
 
     public void setFlag(int flag) {
         this.flag = flag;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return "PetData{" +
+                "userid='" + userid + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", weight=" + weight +
+                ", birth='" + birth + '\'' +
+                ", inform='" + inform + '\'' +
+                ", kind='" + kind + '\'' +
+                ", flag=" + flag +
+                ", sex=" + sex +
+                '}';
     }
 }

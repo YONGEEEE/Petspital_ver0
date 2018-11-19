@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/view"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="44dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/black_rect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,67 +26,113 @@
     <LinearLayout
         android:layout_width="174dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.089">
 
-        <customfonts.MyTextView_Roboto_Regular
-            android:id="@+id/txt_petname"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="이름"
-            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <customfonts.MyTextView_Roboto_Regular
-            android:id="@+id/txt_sex"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="남/여"
-            android:textSize="16sp" />
+            <customfonts.MyTextView_Roboto_Regular
+                android:id="@+id/txt_kind"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="종"
+                android:textSize="16sp" />
 
-        <customfonts.MyTextView_Roboto_Regular
-            android:id="@+id/txt_classification"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="종"
-            android:textSize="16sp" />
+            <customfonts.MyTextView_Roboto_Regular
+                android:id="@+id/txt_birth"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="생일"
+                android:textSize="16sp" />
+
+            <customfonts.MyTextView_Roboto_Regular
+                android:id="@+id/txt_weight"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="몸무게"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <customfonts.MyTextView_Roboto_Regular
+                android:id="@+id/txt_name"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="이름"
+                android:textSize="16sp" />
+
+            <customfonts.MyTextView_Roboto_Regular
+                android:id="@+id/txt_age"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="나이"
+                android:textSize="16sp" />
+
+            <customfonts.MyTextView_Roboto_Regular
+                android:id="@+id/txt_sex"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="성별"
+                android:textSize="16sp" />
+
+        </LinearLayout>
     </LinearLayout>
+
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="267dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="68dp"
         android:background="@drawable/black_rect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="0.2">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.924">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,7 +140,7 @@
             android:orientation="vertical">
 
             <customfonts.MyTextView_Roboto_Regular
-                android:id="@+id/textView4"
+                android:id="@+id/txt_inform"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -105,14 +151,15 @@
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,18 +172,21 @@
             android:id="@+id/btn_revise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@drawable/round_rectangle"
-            android:layout_marginRight="10dp"
             android:text="수정" />
 
+
         <customfonts.Button_Roboto_Medium
-            android:id="@+id/btncheck"
+            android:id="@+id/btn_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/round_rectangle"
             android:text="확인" />
+
     </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

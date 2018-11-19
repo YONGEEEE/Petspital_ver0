@@ -1,6 +1,7 @@
 package connectDB;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -33,17 +34,13 @@ public class NetworkTask_UpdatePet extends AsyncTask<PetData, Void, Integer> {
         Gson gson = new Gson();
         JsonObject object = new JsonObject();
         object.addProperty("userid", NowUser.id);
-        object.addProperty("petid", voids[0].getPetid());
         object.addProperty("name", voids[0].getName());
         object.addProperty("age", voids[0].getAge());
         object.addProperty("weight", voids[0].getWeight());
-        object.addProperty("birth", voids[0].getBirth());
-        object.addProperty("inform",voids[0].getInfrom());
-        object.addProperty("kind",voids[0].getKind());
-        object.addProperty("flag",voids[0].getFlag());
+        object.addProperty("inform",voids[0].getInform());
 
         json = gson.toJson(object);
-
+        Log.d("JSON",json);
         /*--------------*/
 
         OkHttpClient okHttpClient = new OkHttpClient();

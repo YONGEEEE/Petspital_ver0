@@ -16,7 +16,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class NetworkTask_AddPet extends AsyncTask<PetData, Void, Integer> {
+public class NetworkTask_DeletePet extends AsyncTask<PetData, Void, Integer> {
 
 
     public static final MediaType JSON
@@ -25,7 +25,7 @@ public class NetworkTask_AddPet extends AsyncTask<PetData, Void, Integer> {
     @Override
     protected Integer doInBackground(PetData... voids) {
 
-        String url = "http://192.168.0.6:8080/Pet/AddPet";
+        String url = "http://192.168.0.6:8080/Pet/DeletePet";
         /* Tojson */
 
         String json;

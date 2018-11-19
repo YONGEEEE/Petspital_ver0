@@ -3,6 +3,7 @@ package fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import java.util.concurrent.ExecutionException;
 
 import adapter.RecycleAdapter_petlist;
 import connectDB.NetworkTask_GetPetList;
+import object.NowUser;
 import object.PetData;
 
 
@@ -37,7 +39,7 @@ public class NearByFragment extends Fragment {
         view = inflater.inflate(R.layout.activity_campmain, container, false);
 
         try {
-            tmp = new NetworkTask_GetPetList().execute().get();
+            tmp = new NetworkTask_GetPetList().execute(NowUser.id).get();
             Log.d("Size", "" + tmp.size());
         } catch (InterruptedException e) {
             e.printStackTrace();

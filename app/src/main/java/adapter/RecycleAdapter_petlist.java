@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutionException;
 
 import connectDB.NetworkTask_GetPetList;
 
+import object.NowUser;
 import object.PetData;
 
 
@@ -51,14 +52,6 @@ public class RecycleAdapter_petlist extends RecyclerView.Adapter<RecycleAdapter_
     public RecycleAdapter_petlist(Context mainActivityContacts, List<PetData> moviesList) {
         this.CampdataList = moviesList;
         this.context = mainActivityContacts;
-        try {
-            tmp = new NetworkTask_GetPetList().execute().get();
-            Log.d("Size", "" + tmp.size());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -86,7 +79,6 @@ public class RecycleAdapter_petlist extends RecyclerView.Adapter<RecycleAdapter_
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent i = new Intent(context, Pet_information.class);
                 i.putExtra("index", (PetData)movie);
                 context.startActivity(i);
