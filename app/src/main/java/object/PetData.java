@@ -4,99 +4,100 @@ import java.io.Serializable;
 
 public class PetData implements Serializable {
 
-    String USERID;
-    String ID;
-    String NM;
-    String AGE;
-    String WEIGHT;
-    String BIRTH;
-    String KIND;
-    int FLAG;// 1: 강아지 0: 고양이
-    String INFORM;
+    private String userid;
+    private String petid;
+    private String name;
+    private String age;
+    private String weight;
+    private String birth;
+    private String infrom;
+    private String kind;
+    private int flag; // 1: 강아지 0 : 고양이
 
-    public PetData(){}
-
-    public PetData(String USERID, String ID, String NM, String AGE, String WEIGHT, String BIRTH, String KIND, int FLAG, String INFORM) {
-        this.USERID = USERID;
-        this.ID = ID;
-        this.NM = NM;
-        this.AGE = AGE;
-        this.WEIGHT = WEIGHT;
-        this.BIRTH = BIRTH;
-        this.KIND = KIND;
-        this.FLAG = FLAG;
-        this.INFORM = INFORM;
+    public PetData() {
     }
 
-    public String getUSERID() {
-        return USERID;
+    public PetData(String userid, String petid, String name, String age, String weight, String birth, String infrom, String kind, int flag) {
+        this.userid = userid;
+        this.petid = petid;
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+        this.birth = birth;
+        this.infrom = infrom;
+        this.kind = kind;
+        this.flag = flag;
     }
 
-    public void setUSERID(String USERID) {
-        this.USERID = USERID;
+    public String getUserid() {
+        return userid;
     }
 
-    public String getID() {
-        return ID;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public String getPetid() {
+        return petid;
     }
 
-    public String getNM() {
-        return NM;
+    public void setPetid(String petid) {
+        this.petid = petid;
     }
 
-    public void setNM(String NM) {
-        this.NM = NM;
+    public String getName() {
+        return name;
     }
 
-    public String getAGE() {
-        return AGE;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setAGE(String AGE) {
-        this.AGE = AGE;
+    public String getAge() {
+        return age;
     }
 
-    public String getWEIGHT() {
-        return WEIGHT;
+    public void setAge(String age) {
+        this.age = age;
     }
 
-    public void setWEIGHT(String WEIGHT) {
-        this.WEIGHT = WEIGHT;
+    public String getWeight() {
+        return weight;
     }
 
-    public String getBIRTH() {
-        return BIRTH;
+    public void setWeight(String weight) {
+        this.weight = weight;
     }
 
-    public void setBIRTH(String BIRTH) {
-        this.BIRTH = BIRTH;
+    public String getBirth() {
+        return birth;
     }
 
-    public String getKIND() {
-        return KIND;
+    public void setBirth(String birth) {
+        this.birth = birth;
     }
 
-    public void setKIND(String KIND) {
-        this.KIND = KIND;
+    public String getInfrom() {
+        return infrom;
     }
 
-    public int getFLAG() {
-        return FLAG;
+    public void setInfrom(String infrom) {
+        this.infrom = infrom;
     }
 
-    public void setFLAG(int FLAG) {
-        this.FLAG = FLAG;
+    public String getKind() {
+        return kind;
     }
 
-    public String getINFORM() {
-        return INFORM;
+    public void setKind(String kind) {
+        this.kind = kind;
     }
 
-    public void setINFORM(String INFORM) {
-        this.INFORM = INFORM;
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 }

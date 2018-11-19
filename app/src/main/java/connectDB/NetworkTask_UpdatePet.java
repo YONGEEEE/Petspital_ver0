@@ -25,22 +25,22 @@ public class NetworkTask_UpdatePet extends AsyncTask<PetData, Void, Integer> {
     @Override
     protected Integer doInBackground(PetData... voids) {
 
-        String url = "http://개인 DB /comment/addList";
+        String url = "http://192.168.0.6:8080/Pet/UpdatePet";
         /* Tojson */
 
         String json;
 
         Gson gson = new Gson();
         JsonObject object = new JsonObject();
-        object.addProperty("UserId", NowUser.id);
-        object.addProperty("PetId", voids[0].getID());
-        object.addProperty("Name", voids[0].getNM());
-        object.addProperty("Age", voids[0].getAGE());
-        object.addProperty("Weight", voids[0].getWEIGHT());
-        object.addProperty("Birth", voids[0].getBIRTH());
-        object.addProperty("Inform",voids[0].getINFORM());
-        object.addProperty("KIND",voids[0].getKIND());
-        object.addProperty("FLAG",voids[0].getFLAG());
+        object.addProperty("userid", NowUser.id);
+        object.addProperty("petid", voids[0].getPetid());
+        object.addProperty("name", voids[0].getName());
+        object.addProperty("age", voids[0].getAge());
+        object.addProperty("weight", voids[0].getWeight());
+        object.addProperty("birth", voids[0].getBirth());
+        object.addProperty("inform",voids[0].getInfrom());
+        object.addProperty("kind",voids[0].getKind());
+        object.addProperty("flag",voids[0].getFlag());
 
         json = gson.toJson(object);
 

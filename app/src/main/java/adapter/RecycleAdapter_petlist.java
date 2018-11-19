@@ -75,8 +75,8 @@ public class RecycleAdapter_petlist extends RecyclerView.Adapter<RecycleAdapter_
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final PetData movie = CampdataList.get(position);
 
-        holder.name.setText(movie.getNM());
-        if(movie.getFLAG()==1){
+        holder.name.setText(movie.getName());
+        if(movie.getFlag()==1){
             holder.image.setImageResource(R.drawable.dog);
         }
         else{

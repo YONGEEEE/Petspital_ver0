@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name"
+                    android:hint="Input ID"
                     android:gravity="center"/>
 
             </LinearLayout>
@@ -112,6 +112,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPassword"
+                    android:hint="Input Password"
                     android:gravity="center"/>
 
             </LinearLayout>
