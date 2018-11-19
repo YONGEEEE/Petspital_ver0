@@ -26,7 +26,6 @@ import object.PetspitalData;
 public class NearByFragment2 extends Fragment {
 
     View view;
-    private int image[] = {R.drawable.yeouido_main, R.drawable.dducksome_main, R.drawable.sungdong_main, R.drawable.guro_main, R.drawable.nanji_main, R.drawable.noeul_main, R.drawable.seouldae_main, R.drawable.junglang_main, R.drawable.gangdong_main};
 
     private ArrayList<PetspitalData> tmp;
     private ArrayList<PetspitalData> CampdataArrayList;

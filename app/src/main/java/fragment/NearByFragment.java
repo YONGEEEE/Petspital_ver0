@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,21 +14,19 @@ import android.view.ViewGroup;
 import com.camping.seoul.seoulcamp.R;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
-import adapter.RecycleAdapter_camplist;
 import adapter.RecycleAdapter_petlist;
-import object.CampData;
+import connectDB.NetworkTask_GetPetList;
 import object.PetData;
-import object.PetspitalData;
 
 
 public class NearByFragment extends Fragment {
 
     View view;
-    private String name[] = {"강아지1", "강아지2", "강아지3", "강아지4", "강아지5", "강아지6", "강아지7", "강아지8", "강아지9"};
-    private int image[] = {R.drawable.yeouido_main, R.drawable.dducksome_main, R.drawable.sungdong_main, R.drawable.guro_main, R.drawable.nanji_main, R.drawable.noeul_main, R.drawable.seouldae_main, R.drawable.junglang_main, R.drawable.gangdong_main};
 
-
+    private List<PetData> tmp;
     private ArrayList<PetData> CampdataArrayList;
     private RecyclerView recyclerView;
     private RecycleAdapter_petlist mAdapter;
@@ -37,13 +36,26 @@ public class NearByFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_campmain, container, false);
 
+        try {
+            tmp = new NetworkTask_GetPetList().execute().get();
+            Log.d("Size", "" + tmp.size());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        for(int i =  0 ; i < tmp.size() ; i++)
+        {
+            Log.d("tmp : ", tmp.get(i).toString());
+        }
+
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_property);
         CampdataArrayList = new ArrayList<>();
 
 
-        for (int i = 0; i < name.length; i++) {
-            PetData beanClassForRecyclerView_contacts = new PetData(name[i]);
+        for (int i = 0; i < tmp.size(); i++) {
+            PetData beanClassForRecyclerView_contacts = tmp.get(i);
             CampdataArrayList.add(beanClassForRecyclerView_contacts);
         }
 

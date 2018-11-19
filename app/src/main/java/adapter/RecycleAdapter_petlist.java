@@ -17,12 +17,11 @@ import com.camping.seoul.seoulcamp.Pet_information;
 import com.camping.seoul.seoulcamp.R;
 
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import apiParser.JsonParser;
+
 import connectDB.NetworkTask_GetPetList;
-import object.CampData;
+
 import object.PetData;
 
 
@@ -32,7 +31,6 @@ public class RecycleAdapter_petlist extends RecyclerView.Adapter<RecycleAdapter_
     Context context;
     List<PetData> CampdataList;
     List<PetData> tmp;
-    private int image[] = {R.drawable.yeouido_detail, R.drawable.dducksome_main, R.drawable.sungdong_main, R.drawable.guro_main, R.drawable.nanji_detail, R.drawable.noeul_detail, R.drawable.seouldae_detail, R.drawable.junglang_detail, R.drawable.gangdong_detail};
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -78,51 +76,19 @@ public class RecycleAdapter_petlist extends RecyclerView.Adapter<RecycleAdapter_
         final PetData movie = CampdataList.get(position);
 
         holder.name.setText(movie.getNM());
+        if(movie.getFLAG()==1){
+            holder.image.setImageResource(R.drawable.dog);
+        }
+        else{
+            holder.image.setImageResource(R.drawable.cat);
+        }
         //수정필요
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent i = new Intent(context, Pet_information.class);
-                /*switch (movie.getName()) {
-                    case "강아지1":
-                        tmp.get("camp2018_1").setImage(image[0]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_1"));//parsing test
-                        break;
-                    case "강아지2":
-                        tmp.get("camp2018_2").setImage(image[1]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_2"));//parsing test
-                        break;
-                    case "강아지3":
-                        tmp.get("camp2018_3").setImage(image[2]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_3"));//parsing test
-                        break;
-                    case "강아지4":
-                        tmp.get("camp2018_4").setImage(image[3]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_4"));//parsing test
-                        break;
-                    case "강아지5":
-                        tmp.get("camp2018_5").setImage(image[4]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_5"));//parsing test
-                        break;
-                    case "강아지6":
-                        tmp.get("camp2018_6").setImage(image[5]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_6"));//parsing test
-                        break;
-                    case "강아지7":
-                        tmp.get("camp2018_7").setImage(image[6]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_7"));//parsing test
-                        break;
-                    case "강아지8":
-                        tmp.get("camp2018_8").setImage(image[7]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_8"));//parsing test
-                        break;
-                    case "강아지9":
-                        tmp.get("camp2018_9").setImage(image[8]);
-                        i.putExtra("index", (CampData) tmp.get("camp2018_9"));//parsing test
-                        break;
-                }*/
-
+                i.putExtra("index", (PetData)movie);
                 context.startActivity(i);
 
             }

@@ -24,6 +24,7 @@ public class Sign_in_activity extends AppCompatActivity {
         edit_id = findViewById(R.id.edit_id);
         edit_password = findViewById(R.id.edit_password);
         button1 = findViewById(R.id.btn_sign_in);
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -130,7 +130,7 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="#ffffff"
+                android:background="@drawable/round_rectangle"
                 android:text="메인"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -148,7 +148,7 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="#ffffff"
+                android:background="@drawable/round_rectangle"
                 android:text="병원"
                 android:textSize="20sp" />
         </LinearLayout>
