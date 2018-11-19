@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import connectDB.NetworkTask_signIn;
 import object.Member;
+import object.NowUser;
 
 public class Sign_in_activity extends AppCompatActivity {
     Button button1,button2;
@@ -34,12 +35,17 @@ public class Sign_in_activity extends AppCompatActivity {
                     Toast.makeText(Sign_in_activity.this, "비밀번호를 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
                 }else {
                     try {
-                        Integer success = new NetworkTask_signIn().execute(new Member(id,pw)).get();
-                       System.out.print(success);
-                        if(success==1)
+                        Member tmp = new NetworkTask_signIn().execute(new Member(id,pw)).get();
+                        if(!tmp.getId().equals(null)&&!tmp.getName().equals(null)&&!tmp.getNickname().equals(null)&&!tmp.getPassword().equals(null)&&!tmp.getTel().equals(null))
                         {
                             Intent i = new Intent(Sign_in_activity.this, Main_activity.class);
                             //회원정보 객체 같이 보내기
+                            NowUser.id=tmp.getId();
+                            NowUser.name=tmp.getName();
+                            NowUser.nickname=tmp.getNickname();
+                            NowUser.password=tmp.getPassword();
+                            NowUser.tel=tmp.getTel();
+//                            i.putExtra("index",  tmp);//parsing test
                             startActivity(i);
                         }
                     } catch (Exception e) {

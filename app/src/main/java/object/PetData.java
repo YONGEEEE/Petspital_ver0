@@ -1,6 +1,8 @@
 package object;
 
-public class PetData {
+import java.io.Serializable;
+
+public class PetData implements Serializable {
 
     String ID;
     String NM;

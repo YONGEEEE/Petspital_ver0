@@ -15,11 +15,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import fragment.NearByFragment;
 import fragment.NearByFragment2;
+import object.NowUser;
 import weather.WeatherInfo;
 import weather.WeatherInfo2;
 
@@ -27,6 +29,7 @@ public class Main_activity  extends AppCompatActivity {
     FrameLayout frameLayout;
     Button button_main,button_petspital;
     LinearLayout layout;
+    TextView txt_nickname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +38,7 @@ public class Main_activity  extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_mainpage);
 
-
+        txt_nickname = findViewById(R.id.txt_nickname);
         final ViewPager pager = (ViewPager) findViewById(R.id.weatherPager);
         pager.setOffscreenPageLimit(3); //프래그먼트를 미리 담아두기
 
@@ -57,6 +60,7 @@ public class Main_activity  extends AppCompatActivity {
         button_petspital = findViewById(R.id.btn_petspital);
         layout = findViewById(R.id.layout_search);
 
+        txt_nickname.setText(NowUser.nickname+"님");
         /*button_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

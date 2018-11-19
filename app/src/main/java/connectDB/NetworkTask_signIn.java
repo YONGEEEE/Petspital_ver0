@@ -19,15 +19,16 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class NetworkTask_signIn extends AsyncTask<Member, Void, Integer>{
+public class NetworkTask_signIn extends AsyncTask<Member, Void, Member>{
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
-    String url = "http://localhost:8080/member/signIn";
-
+    String url = "http://192.168.0.6:8080/member/signIn";
+    String bodyStr = "";
     String json;
+    Member result;
 
     @Override
-    protected Integer doInBackground(Member... voids) {
+    protected Member doInBackground(Member... voids) {
         Gson gson = new Gson();
         JsonObject object = new JsonObject();
         object.addProperty("id", voids[0].getId());
@@ -44,11 +45,12 @@ public class NetworkTask_signIn extends AsyncTask<Member, Void, Integer>{
 
         try {
             Response response = okHttpClient.newCall(request).execute();
-            return 1;
+            bodyStr = response.body().string();
+            result  = gson.fromJson(bodyStr, Member.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return result;
     }
 }
