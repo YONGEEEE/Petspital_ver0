@@ -19,7 +19,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class NetworkTask_signup extends AsyncTask<Member, Void, Integer>{
+public class NetworkTask_signUp extends AsyncTask<Member, Void, Integer>{
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
     String url = "http://localhost:8080/member/signIn";
