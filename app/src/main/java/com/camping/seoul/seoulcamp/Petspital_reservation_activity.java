@@ -3,7 +3,7 @@ package com.camping.seoul.seoulcamp;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-public class Petspital_reservation_activity   extends AppCompatActivity {
+public class Petspital_reservation_activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
