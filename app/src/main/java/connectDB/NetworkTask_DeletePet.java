@@ -40,6 +40,7 @@ public class NetworkTask_DeletePet extends AsyncTask<PetData, Void, Integer> {
         object.addProperty("inform",voids[0].getInform());
         object.addProperty("kind",voids[0].getKind());
         object.addProperty("flag",voids[0].getFlag());
+        object.addProperty("sex",voids[0].getSex());
 
         json = gson.toJson(object);
 
