@@ -7,8 +7,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 import object.NowUser;
 import object.PetData;
@@ -18,16 +16,15 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class NetworkTask_UpdatePet extends AsyncTask<PetData, Void, PetData> {
+public class NetworkTask_UpdatePet extends AsyncTask<PetData, Void, Integer> {
 
 
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
 
     @Override
-    protected PetData doInBackground(PetData... voids) {
+    protected Integer doInBackground(PetData... voids) {
 
-        String bodyStr="";
         String url = "http://192.168.0.6:8080/Pet/UpdatePet";
         /* Tojson */
 
@@ -53,14 +50,12 @@ public class NetworkTask_UpdatePet extends AsyncTask<PetData, Void, PetData> {
                 .build();
         try {
             Response response = okHttpClient.newCall(request).execute();
-            bodyStr = response.body().string();
-            Log.d("response", bodyStr);
+            response.body();
+            return 1;
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        PetData[] array = gson.fromJson(bodyStr, PetData[].class);
-        List<PetData> list = Arrays.asList(array);
-        return list.get(0);
+        return null;
     }
 }
