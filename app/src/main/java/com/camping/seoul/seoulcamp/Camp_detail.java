@@ -392,11 +392,12 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onClick(DialogInterface dialog, int which) {//수정필요
                     try {
-                        Integer n = new NetworkTask_DelList().execute(cm).get();
-                        if(n==1)
-                        {
-                            Toast.makeText(getApplicationContext(), "삭제 성공", Toast.LENGTH_SHORT).show();
-                            setList();
+                        if(NowUser.id.equals(cm.getId())) {
+                            Integer n = new NetworkTask_DelList().execute(cm).get();
+                            if (n == 1) {
+                                Toast.makeText(getApplicationContext(), "삭제 성공", Toast.LENGTH_SHORT).show();
+                                setList();
+                            }
                         }
                         else
                         {

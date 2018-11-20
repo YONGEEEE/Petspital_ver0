@@ -108,7 +108,6 @@ public class Reservation_activity extends AppCompatActivity {
     void UpdateNow() {
 
         txt_select_day.setText(String.format("%d/%d/%d", mYear,
-
                 mMonth + 1, mDay));
 
 
