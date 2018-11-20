@@ -20,7 +20,7 @@ public class Sign_in_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Intent i = new Intent(this,Intro_Activity.class);
+        Intent i = new Intent(this, Intro_Activity.class);
         startActivity(i);
 
         edit_id = findViewById(R.id.edit_id);
@@ -39,7 +39,10 @@ public class Sign_in_activity extends AppCompatActivity {
                 } else {
                     try {
                         Member tmp = new NetworkTask_signIn().execute(new Member(id, pw)).get();
-                        if (!tmp.getId().equals(null) && !tmp.getName().equals(null) && !tmp.getNickname().equals(null) && !tmp.getPassword().equals(null) && !tmp.getTel().equals(null)) {
+                        if (tmp.getFlag() == 1) {
+                            Intent i = new Intent(this, activity_myreservation.class);
+                            startActivity(i);
+                        } else if (tmp.getFlag() != 1 && !tmp.getId().equals(null) && !tmp.getName().equals(null) && !tmp.getNickname().equals(null) && !tmp.getPassword().equals(null) && !tmp.getTel().equals(null)) {
                             Intent i = new Intent(Sign_in_activity.this, Main_activity.class);
                             //회원정보 객체 같이 보내기
                             NowUser.id = tmp.getId();
