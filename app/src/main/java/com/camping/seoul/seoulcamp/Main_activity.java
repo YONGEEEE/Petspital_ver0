@@ -20,19 +20,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import connectDB.NetworkTask_GetPet;
+import connectDB.NetworkTask_getReservationList;
 import fragment.NearByFragment;
 import fragment.NearByFragment2;
 import object.NowUser;
+import object.Reservation;
 import weather.WeatherInfo;
 import weather.WeatherInfo2;
 
 public class Main_activity extends AppCompatActivity {
     FrameLayout frameLayout;
-    Button button_main, button_petspital, button_add;
+    Button button_main, button_petspital, button_add , button_reservation;
     LinearLayout layout;
     TextView txt_nickname;
 
+    List<Reservation> reservation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +67,7 @@ public class Main_activity extends AppCompatActivity {
         button_main = findViewById(R.id.btn_main);
         button_petspital = findViewById(R.id.btn_petspital);
         button_add = findViewById(R.id.btn_add);
+        button_reservation = findViewById(R.id.btn_reservation);
         layout = findViewById(R.id.layout_search);
 
         txt_nickname.setText(NowUser.nickname + "님");
@@ -86,6 +92,8 @@ public class Main_activity extends AppCompatActivity {
             }
         });
 
+        getReservation();
+        button_reservation.setText(reservation.get(0).getPetspital()+" "+reservation.get(0).getRegdate()+"진료예정");
 
     }
 
@@ -146,5 +154,14 @@ public class Main_activity extends AppCompatActivity {
             layout.setVisibility(View.VISIBLE); // 검색란
         }
         button_add.setVisibility(View.GONE); // 추가
+    }
+
+    public void getReservation()
+    {
+        try{
+            reservation = new NetworkTask_getReservationList().execute(NowUser.id).get();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

@@ -32,7 +32,7 @@
             android:layout_height="50dp"
             android:orientation="horizontal">
 
-            <TextView
+            <customfonts.MyTextView_Roboto_Regular
                 android:id="@+id/txt_nickname"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
@@ -46,11 +46,18 @@
             android:layout_height="50dp"
             android:orientation="horizontal">
 
-            <TextView
+            <customfonts.MyTextView_Roboto_Regular
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="예약현황" />
+
+            <customfonts.Button_Roboto_Medium
+                android:id="@+id/btn_reservation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#ffffff"/>
 
         </LinearLayout>
         <!-- 날씨 -->
@@ -66,7 +73,7 @@
             android:orientation="horizontal"
             android:visibility="gone">
 
-            <TextView
+            <customfonts.MyTextView_Roboto_Regular
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
