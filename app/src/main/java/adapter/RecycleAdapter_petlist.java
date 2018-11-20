@@ -5,24 +5,18 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.camping.seoul.seoulcamp.Camp_detail;
 import com.camping.seoul.seoulcamp.Pet_information;
 import com.camping.seoul.seoulcamp.R;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-
-import connectDB.NetworkTask_GetPetList;
-
-import object.NowUser;
+import connectDB.NetworkTask_GetPet;
 import object.PetData;
 
 
@@ -30,6 +24,7 @@ public class RecycleAdapter_petlist extends RecyclerView.Adapter<RecycleAdapter_
 
     Context context;
     List<PetData> CampdataList;
+    PetData temp;
     List<PetData> tmp;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -78,7 +73,12 @@ public class RecycleAdapter_petlist extends RecyclerView.Adapter<RecycleAdapter_
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, Pet_information.class);
-                i.putExtra("index", (PetData) movie);
+                try{
+                    temp = new NetworkTask_GetPet().execute(movie).get();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                i.putExtra("index", (PetData) temp);
                 context.startActivity(i);
 
             }
