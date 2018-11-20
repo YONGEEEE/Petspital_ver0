@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import connectDB.NetworkTask_GetPet;
+import connectDB.NetworkTask_checkAlreadyReservation;
 import connectDB.NetworkTask_checkReservationAble;
 import connectDB.NetworkTask_insertReservation;
 import object.NowUser;
@@ -102,24 +103,32 @@ public class RecycleAdapter_reservationpetlist extends RecyclerView.Adapter<Recy
         builder.setPositiveButton("예약", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {//수정필요
-                int result;
+                int result , already_reservation;
+                Reservation tmp = new Reservation(NowUser.petspital, NowUser.regdate, petData.getUserid(), petData.getName(), petData.getAge(), petData.getWeight(), petData.getBirth(), petData.getInform(), petData.getKind(), petData.getFlag(), petData.getSex());
+                Log.d("예약동물:",tmp.toString());
                 try {
                     if (NowUser.regdate.equals("")) {
                         Toast.makeText(context.getApplicationContext(), "예약 날짜를 선택해 주세요", Toast.LENGTH_SHORT).show();
                     } else {
                         result = new NetworkTask_checkReservationAble().execute(new Reservation(NowUser.petspital, NowUser.regdate)).get();
-                        if (result < 5) {
-                            Reservation tmp = new Reservation(NowUser.petspital, NowUser.regdate, petData.getUserid(), petData.getName(), petData.getAge(), petData.getWeight(), petData.getBirth(), petData.getInform(), petData.getKind(), petData.getFlag(), petData.getSex());
-                            int insert_result = new NetworkTask_insertReservation().execute(tmp).get();
-                            if (insert_result == 1) {
-                                Toast.makeText(context.getApplicationContext(), "예약 완료", Toast.LENGTH_SHORT).show();
+                        already_reservation = new NetworkTask_checkAlreadyReservation().execute(tmp).get();
+                        Log.d("예약유무",Integer.toString(already_reservation));
+                        if(already_reservation!=0)
+                        {
+                            Toast.makeText(context.getApplicationContext(), "이미 예약을 하셨습니다.(예약불가)", Toast.LENGTH_SHORT).show();
+                        }else{
+                            if (result < 5) {
+                                int insert_result = new NetworkTask_insertReservation().execute(tmp).get();
+                                if (insert_result == 1) {
+                                    Toast.makeText(context.getApplicationContext(), "예약 완료", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context.getApplicationContext(), "DB삽입 실패", Toast.LENGTH_SHORT).show();
+                                }
+
+
                             } else {
-                                Toast.makeText(context.getApplicationContext(), "DB삽입 실패", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context.getApplicationContext(), "예약 불가", Toast.LENGTH_SHORT).show();
                             }
-
-
-                        } else {
-                            Toast.makeText(context.getApplicationContext(), "예약 불가", Toast.LENGTH_SHORT).show();
                         }
                     }
                 } catch (Exception e) {
