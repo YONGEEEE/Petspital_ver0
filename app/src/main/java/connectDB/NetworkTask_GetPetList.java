@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import listview.CommentItem;
 import object.PetData;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

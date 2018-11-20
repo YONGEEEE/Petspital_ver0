@@ -1,17 +1,13 @@
 package connectDB;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import listview.CommentItem;
 import object.Member;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -19,7 +15,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class NetworkTask_signIn extends AsyncTask<Member, Void, Member>{
+public class NetworkTask_signIn extends AsyncTask<Member, Void, Member> {
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
     String url = "http://192.168.0.6:8080/member/signIn";
@@ -36,7 +32,7 @@ public class NetworkTask_signIn extends AsyncTask<Member, Void, Member>{
         json = gson.toJson(object);
         RequestBody body = RequestBody.create(JSON, json);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(1, TimeUnit.MINUTES)
-                .readTimeout(30,TimeUnit.SECONDS).writeTimeout(15,TimeUnit.SECONDS).build();
+                .readTimeout(30, TimeUnit.SECONDS).writeTimeout(15, TimeUnit.SECONDS).build();
 
         Request request = new Request.Builder()
                 .url(url)
@@ -46,7 +42,7 @@ public class NetworkTask_signIn extends AsyncTask<Member, Void, Member>{
         try {
             Response response = okHttpClient.newCall(request).execute();
             bodyStr = response.body().string();
-            result  = gson.fromJson(bodyStr, Member.class);
+            result = gson.fromJson(bodyStr, Member.class);
         } catch (IOException e) {
             e.printStackTrace();
         }

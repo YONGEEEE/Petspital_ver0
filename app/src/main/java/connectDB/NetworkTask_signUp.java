@@ -8,7 +8,6 @@ import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import listview.CommentItem;
 import object.Member;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -43,7 +42,7 @@ public class NetworkTask_signUp extends AsyncTask<Member, Void, Integer> {
         /*--------------*/
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(1, TimeUnit.MINUTES)
-                .readTimeout(30,TimeUnit.SECONDS).writeTimeout(15,TimeUnit.SECONDS).build();
+                .readTimeout(30, TimeUnit.SECONDS).writeTimeout(15, TimeUnit.SECONDS).build();
         RequestBody body = RequestBody.create(JSON, json);
 
         Request request = new Request.Builder()

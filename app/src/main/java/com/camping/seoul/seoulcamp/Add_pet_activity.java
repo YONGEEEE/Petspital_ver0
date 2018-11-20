@@ -6,26 +6,24 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 import connectDB.NetworkTask_AddPet;
-import connectDB.NetworkTask_signUp;
-import object.Member;
 import object.NowUser;
 import object.PetData;
 
 public class Add_pet_activity extends AppCompatActivity {
 
-    EditText edit_name , edit_age , edit_weight , edit_birth , edit_inform , edit_kind;
-//    CheckBox check_dog , check_cat , check_male , check_female;
-    RadioButton rbtn_dog,rbtn_cat,rbtn_male,rbtn_female;
+    EditText edit_name, edit_age, edit_weight, edit_birth, edit_inform, edit_kind;
+    //    CheckBox check_dog , check_cat , check_male , check_female;
+    RadioButton rbtn_dog, rbtn_cat, rbtn_male, rbtn_female;
 
     Button btn_create, btn_cancel;
 
-    int flag , sex;
+    int flag, sex;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,31 +90,23 @@ public class Add_pet_activity extends AppCompatActivity {
 
                 if (name.length() == 0) {
                     Toast.makeText(Add_pet_activity.this, "이름을 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
-                } else if (age== 0) {
+                } else if (age == 0) {
                     Toast.makeText(Add_pet_activity.this, "나이를 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-                }else if(weight==0)
-                {
+                } else if (weight == 0) {
                     Toast.makeText(Add_pet_activity.this, "몸무게을 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-                }else if(birth.length() ==0)
-                {
+                } else if (birth.length() == 0) {
                     Toast.makeText(Add_pet_activity.this, "생일을 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-                }
-                else if(kind.length() ==0)
-                {
+                } else if (kind.length() == 0) {
                     Toast.makeText(Add_pet_activity.this, "종을 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     try {
                         Check_flag_sex();
                         Integer result = new NetworkTask_AddPet().execute(new PetData(NowUser.id, name, age, weight, birth, inform, kind, flag, sex)).get();
-                        if(result==1)
-                        {
+                        if (result == 1) {
                             Toast.makeText(Add_pet_activity.this, "등록", Toast.LENGTH_SHORT).show();
                             setResult(RESULT_OK);
                             finish();
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(Add_pet_activity.this, "등록실패", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e) {
@@ -135,24 +125,19 @@ public class Add_pet_activity extends AppCompatActivity {
 
     }
 
-    public void Check_flag_sex()
-    {
-        if(rbtn_dog.isChecked())
-        {
+    public void Check_flag_sex() {
+        if (rbtn_dog.isChecked()) {
             this.flag = 1;
         }
-        if(rbtn_cat.isChecked())
-        {
+        if (rbtn_cat.isChecked()) {
             this.flag = 0;
         }
-        if(rbtn_male.isChecked())
-        {
+        if (rbtn_male.isChecked()) {
             this.sex = 1;
         }
-        if(rbtn_female.isChecked())
-        {
+        if (rbtn_female.isChecked()) {
             this.sex = 0;
         }
-        Log.d("flag,sex",Integer.toString(flag)+"\t"+Integer.toString(sex));
+        Log.d("flag,sex", Integer.toString(flag) + "\t" + Integer.toString(sex));
     }
 }

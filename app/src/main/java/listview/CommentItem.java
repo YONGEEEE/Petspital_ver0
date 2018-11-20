@@ -21,7 +21,8 @@ public class CommentItem implements Parcelable {
         this.text = text;
         this.star = star;
     }
-    public CommentItem(String camp, String id, String text, double star,String password) {
+
+    public CommentItem(String camp, String id, String text, double star, String password) {
         this.camp = camp;
         this.id = id;
         this.text = text;

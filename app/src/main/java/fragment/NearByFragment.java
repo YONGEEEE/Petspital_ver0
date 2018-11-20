@@ -3,7 +3,6 @@ package fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -46,8 +45,7 @@ public class NearByFragment extends Fragment {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        for(int i =  0 ; i < tmp.size() ; i++)
-        {
+        for (int i = 0; i < tmp.size(); i++) {
             Log.d("tmp : ", tmp.get(i).toString());
         }
 

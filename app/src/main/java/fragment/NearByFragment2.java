@@ -3,7 +3,6 @@ package fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,12 +14,10 @@ import android.view.ViewGroup;
 import com.camping.seoul.seoulcamp.R;
 
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import adapter.RecycleAdapter_camplist;
 import apiParser.JsonParser;
-import object.CampData;
 import object.PetspitalData;
 
 
@@ -46,9 +43,8 @@ public class NearByFragment2 extends Fragment {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        for(int i =  0 ; i < tmp.size() ; i++)
-        {
-           Log.d("tmp : ", tmp.get(i).toString());
+        for (int i = 0; i < tmp.size(); i++) {
+            Log.d("tmp : ", tmp.get(i).toString());
         }
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_property);
         CampdataArrayList = new ArrayList<>();

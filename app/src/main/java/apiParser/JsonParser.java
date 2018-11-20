@@ -19,6 +19,7 @@ import java.util.Set;
 
 import object.CampData;
 import object.PetspitalData;
+
 public class JsonParser extends AsyncTask<Void, Void, ArrayList<PetspitalData>> {
     String str, recieveMsg;
 
@@ -42,7 +43,7 @@ public class JsonParser extends AsyncTask<Void, Void, ArrayList<PetspitalData>> 
                 }
                 recieveMsg = buffer.toString();
                 datamap = jsonparse(recieveMsg);
-                Log.d("test : ",recieveMsg);
+                Log.d("test : ", recieveMsg);
                 reader.close();
             }
         } catch (Exception e) {
@@ -58,8 +59,8 @@ public class JsonParser extends AsyncTask<Void, Void, ArrayList<PetspitalData>> 
     public ArrayList<PetspitalData> jsonparse(String jsonString) {
 
         PetspitalData data;
-       ArrayList<PetspitalData> tmp = new ArrayList<PetspitalData>();
-        String ID,NM,ADDR_OLD,ADDR,STATE,TEL,XCODE,YCODE,PERMISSON_NO;
+        ArrayList<PetspitalData> tmp = new ArrayList<PetspitalData>();
+        String ID, NM, ADDR_OLD, ADDR, STATE, TEL, XCODE, YCODE, PERMISSON_NO;
 
         try {
             JSONArray jarray = new JSONObject(jsonString).getJSONObject("vtrHospitalInfo").getJSONArray("row");

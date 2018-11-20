@@ -12,8 +12,8 @@ import connectDB.NetworkTask_signUp;
 import object.Member;
 
 public class Sign_up_activity extends AppCompatActivity {
-    Button btn_create,btn_cancel;
-    EditText edit_id,edit_name,edit_nickname,edit_password,edit_tel;
+    Button btn_create, btn_cancel;
+    EditText edit_id, edit_name, edit_nickname, edit_password, edit_tel;
 
 
     @Override
@@ -42,28 +42,21 @@ public class Sign_up_activity extends AppCompatActivity {
                     Toast.makeText(Sign_up_activity.this, "아이디를 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
                 } else if (password.length() == 0) {
                     Toast.makeText(Sign_up_activity.this, "비밀번호를 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-                }else if(nickname.length() ==0)
-                {
+                } else if (nickname.length() == 0) {
                     Toast.makeText(Sign_up_activity.this, "닉네임을 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-                }else if(name.length() ==0)
-                {
+                } else if (name.length() == 0) {
                     Toast.makeText(Sign_up_activity.this, "이름을 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-                }else if(tel.length() ==0)
-                {
+                } else if (tel.length() == 0) {
                     Toast.makeText(Sign_up_activity.this, "전화번호를 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     try {
                         Integer result = new NetworkTask_signUp().execute(new Member(name, id, password, nickname, tel)).get();
-                        Log.d("Member : " , name+"\t"+id+"\t"+password+"\t"+nickname+"\t"+tel);
+                        Log.d("Member : ", name + "\t" + id + "\t" + password + "\t" + nickname + "\t" + tel);
                         Log.d("result : ", Integer.toString(result));
-                        if(result==1)
-                        {
+                        if (result == 1) {
                             Toast.makeText(Sign_up_activity.this, "가입완료", Toast.LENGTH_SHORT).show();
                             finish();
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(Sign_up_activity.this, "가입실패", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e) {

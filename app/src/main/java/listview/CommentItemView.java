@@ -34,7 +34,7 @@ public class CommentItemView extends LinearLayout {
         txtName = (TextView) findViewById(R.id.txtName);
         txtComment = (TextView) findViewById(R.id.txtComment);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        txtTime = (TextView)findViewById(R.id.txtTime);
+        txtTime = (TextView) findViewById(R.id.txtTime);
 
     }
 
@@ -50,6 +50,8 @@ public class CommentItemView extends LinearLayout {
         ratingBar.setRating((float) rating);
     }
 
-    public void setTime(String regdate) { txtTime.setText(regdate.substring(0,19)); }
+    public void setTime(String regdate) {
+        txtTime.setText(regdate.substring(0, 19));
+    }
 
 }

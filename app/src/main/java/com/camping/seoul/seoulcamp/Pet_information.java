@@ -9,15 +9,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import connectDB.NetworkTask_AddPet;
-import connectDB.NetworkTask_DeletePet;
-import object.NowUser;
 import object.PetData;
-import object.PetspitalData;
 
 public class Pet_information extends AppCompatActivity {
 
-    Button btn_check , btn_revise ;
+    Button btn_check, btn_revise;
     TextView txt_name, txt_birth, txt_weight, txt_kind, txt_age, txt_sex, txt_inform;
     ImageView imageView;
     PetData index;
@@ -31,7 +27,7 @@ public class Pet_information extends AppCompatActivity {
         Intent i = getIntent();
         index = (PetData) i.getSerializableExtra("index");//parsing test
 
-        Log.d("aaaaa",index.toString());
+        Log.d("aaaaa", index.toString());
         txt_name = findViewById(R.id.txt_name);
         txt_birth = findViewById(R.id.txt_birth);
         txt_weight = findViewById(R.id.txt_weight);
@@ -47,12 +43,9 @@ public class Pet_information extends AppCompatActivity {
         txt_weight.setText(Float.toString(index.getWeight()));
         txt_kind.setText(index.getKind());
         txt_age.setText(Integer.toString(index.getAge()));
-        if (index.getSex() == 1)
-        {
+        if (index.getSex() == 1) {
             txt_sex.setText("수컷");
-        }
-        else
-        {
+        } else {
             txt_sex.setText("암컷");
         }
         txt_inform.setText(index.getInform());
@@ -65,8 +58,8 @@ public class Pet_information extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Pet_information.this, Revise_pet_information.class);
-                i.putExtra("index", (PetData)index);
-                startActivityForResult(i,1);
+                i.putExtra("index", (PetData) index);
+                startActivityForResult(i, 1);
             }
         });
         btn_check.setOnClickListener(new View.OnClickListener() {
@@ -77,9 +70,10 @@ public class Pet_information extends AppCompatActivity {
         });
 
     }
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        if(resultCode==RESULT_OK){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
             setResult(RESULT_OK);
             finish();
         }

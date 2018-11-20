@@ -25,12 +25,12 @@ public class PetspitalData implements Serializable {
     String PERMISSION_NO;
     String DETAIL_STAT_NM;
 
-    public PetspitalData(){
+    public PetspitalData() {
 
     }
 
-    public PetspitalData(String NM){
-        this.NM=NM;
+    public PetspitalData(String NM) {
+        this.NM = NM;
     }
 
     public PetspitalData(String ID, String NM, String ADDR_OLD, String ADDR, String PERMISSION_DT, String STATE, String STOP_DT, String SUSPENSION_START_DT, String SUSPENSION_END_DT, String RE_OPEN_DT, String AREA, String POST, String TOTAL_EMPLOY, String SFRMPRD_TYPE, String LSIND_TYPE, String TEL, double XCODE, double YCODE, String PERMISSION_NO, String DETAIL_STAT_NM) {

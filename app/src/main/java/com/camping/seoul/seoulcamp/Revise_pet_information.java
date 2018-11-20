@@ -1,10 +1,7 @@
 package com.camping.seoul.seoulcamp;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import connectDB.NetworkTask_AddPet;
 import connectDB.NetworkTask_DeletePet;
 import connectDB.NetworkTask_UpdatePet;
 import object.NowUser;
@@ -25,9 +21,10 @@ public class Revise_pet_information extends AppCompatActivity {
     TextView txt_name;
     EditText edit_age, edit_weight, edit_inform;
     ImageView imageView;
-    Button btn_finish , btn_cancel, btn_delete;
+    Button btn_finish, btn_cancel, btn_delete;
 
     PetData index;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +35,7 @@ public class Revise_pet_information extends AppCompatActivity {
         edit_weight = findViewById(R.id.edit_weight);
         edit_inform = findViewById(R.id.edit_inform);
 
-        btn_finish =  findViewById(R.id.btn_finish);
+        btn_finish = findViewById(R.id.btn_finish);
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_delete = findViewById(R.id.btn_delete);
 
@@ -47,7 +44,7 @@ public class Revise_pet_information extends AppCompatActivity {
         Intent i = getIntent();
         index = (PetData) i.getSerializableExtra("index");//parsing test
 
-        Log.d("Aaaaaa" , index.toString());
+        Log.d("Aaaaaa", index.toString());
 
         txt_name.setText(index.getName());
         edit_age.setText(Integer.toString(index.getAge()));
@@ -66,28 +63,21 @@ public class Revise_pet_information extends AppCompatActivity {
                 int age = Integer.parseInt(edit_age.getText().toString());
                 float weight = Float.parseFloat(edit_weight.getText().toString());
                 String inform = edit_inform.getText().toString();
-                if(edit_age.getText().length()==0)
-                {
+                if (edit_age.getText().length() == 0) {
 
-                }else if(edit_weight.getText().length()==0)
-                {
+                } else if (edit_weight.getText().length() == 0) {
 
-                }else
-                {
-                    try{
-                        Integer result = new NetworkTask_UpdatePet().execute(new PetData(NowUser.id , name,age,weight,inform)).get();
+                } else {
+                    try {
+                        Integer result = new NetworkTask_UpdatePet().execute(new PetData(NowUser.id, name, age, weight, inform)).get();
 
-                        if(result==1)
-                        {
+                        if (result == 1) {
                             Toast.makeText(Revise_pet_information.this, "수정완료", Toast.LENGTH_SHORT).show();
                             finish();
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(Revise_pet_information.this, "수정실패", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -104,15 +94,13 @@ public class Revise_pet_information extends AppCompatActivity {
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try
-                {
+                try {
                     Integer result = new NetworkTask_DeletePet().execute(index).get();
-                    if(result==1){
+                    if (result == 1) {
                         setResult(RESULT_OK);
                         finish();
                     }
-                }catch(Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

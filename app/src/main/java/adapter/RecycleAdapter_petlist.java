@@ -26,7 +26,6 @@ import object.NowUser;
 import object.PetData;
 
 
-
 public class RecycleAdapter_petlist extends RecyclerView.Adapter<RecycleAdapter_petlist.MyViewHolder> {
 
     Context context;
@@ -69,10 +68,9 @@ public class RecycleAdapter_petlist extends RecyclerView.Adapter<RecycleAdapter_
         final PetData movie = CampdataList.get(position);
 
         holder.name.setText(movie.getName());
-        if(movie.getFlag()==1){
+        if (movie.getFlag() == 1) {
             holder.image.setImageResource(R.drawable.dog);
-        }
-        else{
+        } else {
             holder.image.setImageResource(R.drawable.cat);
         }
         //수정필요
@@ -80,7 +78,7 @@ public class RecycleAdapter_petlist extends RecyclerView.Adapter<RecycleAdapter_
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, Pet_information.class);
-                i.putExtra("index", (PetData)movie);
+                i.putExtra("index", (PetData) movie);
                 context.startActivity(i);
 
             }

@@ -8,7 +8,6 @@ import com.google.gson.JsonObject;
 
 import java.io.IOException;
 
-import listview.CommentItem;
 import object.NowUser;
 import object.PetData;
 import okhttp3.MediaType;
@@ -37,10 +36,10 @@ public class NetworkTask_UpdatePet extends AsyncTask<PetData, Void, Integer> {
         object.addProperty("name", voids[0].getName());
         object.addProperty("age", voids[0].getAge());
         object.addProperty("weight", voids[0].getWeight());
-        object.addProperty("inform",voids[0].getInform());
+        object.addProperty("inform", voids[0].getInform());
 
         json = gson.toJson(object);
-        Log.d("JSON",json);
+        Log.d("JSON", json);
         /*--------------*/
 
         OkHttpClient okHttpClient = new OkHttpClient();

@@ -1,11 +1,9 @@
 package com.camping.seoul.seoulcamp;
 
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -16,14 +14,10 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import fragment.NearByFragment;
-import fragment.NearByFragment2;
-import weather.WeatherInfo;
-import weather.WeatherInfo2;
-
 import java.util.Calendar;
-
 import java.util.GregorianCalendar;
+
+import fragment.NearByFragment;
 
 
 public class Reservation_activity extends AppCompatActivity {
@@ -34,7 +28,6 @@ public class Reservation_activity extends AppCompatActivity {
     int mYear, mMonth, mDay, mHour, mMinute;
 
     TextView txt_select_day;
-
 
 
     @Override
@@ -79,7 +72,6 @@ public class Reservation_activity extends AppCompatActivity {
                     new DatePickerDialog.OnDateSetListener() {
 
 
-
                         @Override
 
                         public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -113,13 +105,11 @@ public class Reservation_activity extends AppCompatActivity {
         transaction.commit();
     }
 
-    void UpdateNow(){
+    void UpdateNow() {
 
         txt_select_day.setText(String.format("%d/%d/%d", mYear,
 
                 mMonth + 1, mDay));
-
-
 
 
     }

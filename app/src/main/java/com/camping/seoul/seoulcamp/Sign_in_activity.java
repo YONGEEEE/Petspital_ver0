@@ -3,7 +3,6 @@ package com.camping.seoul.seoulcamp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,8 +13,8 @@ import object.Member;
 import object.NowUser;
 
 public class Sign_in_activity extends AppCompatActivity {
-    Button button1,button2;
-    EditText edit_id,edit_password;
+    Button button1, button2;
+    EditText edit_id, edit_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +33,17 @@ public class Sign_in_activity extends AppCompatActivity {
                     Toast.makeText(Sign_in_activity.this, "아이디를 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
                 } else if (edit_password.getText().toString().length() == 0) {
                     Toast.makeText(Sign_in_activity.this, "비밀번호를 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     try {
-                        Member tmp = new NetworkTask_signIn().execute(new Member(id,pw)).get();
-                        if(!tmp.getId().equals(null)&&!tmp.getName().equals(null)&&!tmp.getNickname().equals(null)&&!tmp.getPassword().equals(null)&&!tmp.getTel().equals(null))
-                        {
+                        Member tmp = new NetworkTask_signIn().execute(new Member(id, pw)).get();
+                        if (!tmp.getId().equals(null) && !tmp.getName().equals(null) && !tmp.getNickname().equals(null) && !tmp.getPassword().equals(null) && !tmp.getTel().equals(null)) {
                             Intent i = new Intent(Sign_in_activity.this, Main_activity.class);
                             //회원정보 객체 같이 보내기
-                            NowUser.id=tmp.getId();
-                            NowUser.name=tmp.getName();
-                            NowUser.nickname=tmp.getNickname();
-                            NowUser.password=tmp.getPassword();
-                            NowUser.tel=tmp.getTel();
+                            NowUser.id = tmp.getId();
+                            NowUser.name = tmp.getName();
+                            NowUser.nickname = tmp.getNickname();
+                            NowUser.password = tmp.getPassword();
+                            NowUser.tel = tmp.getTel();
 //                            i.putExtra("index",  tmp);//parsing test
                             startActivity(i);
                         }

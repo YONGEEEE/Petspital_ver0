@@ -93,7 +93,7 @@ public class RecycleAdapter_camplist extends RecyclerView.Adapter<RecycleAdapter
             public void onClick(View view) {
 
                 Intent i = new Intent(context, Camp_detail.class);
-                i.putExtra("index", (PetspitalData)movie);
+                i.putExtra("index", (PetspitalData) movie);
                 context.startActivity(i);
 
             }

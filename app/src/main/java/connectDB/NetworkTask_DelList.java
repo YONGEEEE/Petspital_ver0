@@ -30,7 +30,7 @@ public class NetworkTask_DelList extends AsyncTask<CommentItem, Void, Integer> {
         json = gson.toJson(object);
         RequestBody body = RequestBody.create(JSON, json);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(1, TimeUnit.MINUTES)
-                .readTimeout(30,TimeUnit.SECONDS).writeTimeout(15,TimeUnit.SECONDS).build();
+                .readTimeout(30, TimeUnit.SECONDS).writeTimeout(15, TimeUnit.SECONDS).build();
 
         Request request = new Request.Builder()
                 .url(url)
