@@ -97,8 +97,12 @@ public class Revise_pet_information extends AppCompatActivity {
                 try {
                     Integer result = new NetworkTask_DeletePet().execute(index).get();
                     if (result == 1) {
+                        Toast.makeText(Revise_pet_information.this, "삭제완료", Toast.LENGTH_SHORT).show();
                         setResult(RESULT_OK);
                         finish();
+                    }
+                    else{
+                        Toast.makeText(Revise_pet_information.this, "삭제실패", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

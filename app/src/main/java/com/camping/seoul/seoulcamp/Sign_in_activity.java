@@ -20,6 +20,9 @@ public class Sign_in_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Intent i = new Intent(this,Intro_Activity.class);
+        startActivity(i);
+
         edit_id = findViewById(R.id.edit_id);
         edit_password = findViewById(R.id.edit_password);
         button1 = findViewById(R.id.btn_sign_in);

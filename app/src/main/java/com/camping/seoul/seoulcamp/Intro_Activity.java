@@ -1,5 +1,6 @@
 package com.camping.seoul.seoulcamp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ public class Intro_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
 
         intro_start();
+
     }
 
     private void intro_start() {
@@ -25,5 +27,6 @@ public class Intro_Activity extends AppCompatActivity {
                 finish();
             }
         }, 2000);
+
     }
 }
