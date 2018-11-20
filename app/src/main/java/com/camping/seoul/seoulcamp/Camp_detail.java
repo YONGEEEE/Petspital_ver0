@@ -181,6 +181,7 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
             public void onClick(View v) {
                 //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(strreserv)));
                 Intent i = new Intent(Camp_detail.this, Reservation_activity.class);
+                NowUser.petspital=index.getNM();
                 startActivity(i);
             }
         });
@@ -232,9 +233,10 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        double latitude = addressList.get(0).getLatitude();
-        double longitude = addressList.get(0).getLongitude();
+        double latitude = 0;
+        double longitude = 0;
+        latitude = addressList.get(0).getLatitude();
+        longitude = addressList.get(0).getLongitude();
 
         CameraPosition cameraPosition = new CameraPosition.Builder().target(
                 new LatLng(latitude, longitude)).zoom(16).build();

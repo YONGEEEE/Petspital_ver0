@@ -17,14 +17,14 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import fragment.NearByFragment;
+import fragment.NearByFragment1;
+import object.NowUser;
 
 
 public class Reservation_activity extends AppCompatActivity {
     FrameLayout frameLayout;
     Button button_select_day;
     LinearLayout layout;
-
     int mYear, mMonth, mDay, mHour, mMinute;
 
     TextView txt_select_day;
@@ -53,7 +53,7 @@ public class Reservation_activity extends AppCompatActivity {
 
         frameLayout = (FrameLayout) findViewById(R.id.framelayout);
 
-        replace_fragment(new NearByFragment());
+        replace_fragment(new NearByFragment1());
 
         layout = findViewById(R.id.layout_search);
         txt_select_day = findViewById(R.id.txt_select_day);
@@ -109,6 +109,7 @@ public class Reservation_activity extends AppCompatActivity {
 
         txt_select_day.setText(String.format("%d/%d/%d", mYear,
                 mMonth + 1, mDay));
+        NowUser.regdate = String.format("%d/%d/%d", mYear, mMonth + 1, mDay);
 
 
     }

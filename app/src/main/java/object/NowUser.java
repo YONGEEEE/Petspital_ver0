@@ -6,4 +6,6 @@ public class NowUser {
     static public String password;
     static public String nickname;
     static public String tel;
+    static public String petspital;
+    static public String regdate;
 }
