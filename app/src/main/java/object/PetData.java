@@ -26,6 +26,15 @@ public class PetData implements Serializable {
         this.inform = inform;
     }
 
+    public PetData(String userid, String name, String birth, String kind, int flag, int sex) {
+        this.userid = userid;
+        this.name = name;
+        this.birth = birth;
+        this.kind = kind;
+        this.flag = flag;
+        this.sex = sex;
+    }
+
     public PetData(String userid, String name, int age, float weight, String birth, String inform, String kind, int flag, int sex) {
         this.userid = userid;
         this.name = name;

@@ -73,6 +73,7 @@ public class Revise_pet_information extends AppCompatActivity {
 
                         if (result == 1) {
                             Toast.makeText(Revise_pet_information.this, "수정완료", Toast.LENGTH_SHORT).show();
+                            setResult(RESULT_FIRST_USER);
                             finish();
                         } else {
                             Toast.makeText(Revise_pet_information.this, "수정실패", Toast.LENGTH_SHORT).show();

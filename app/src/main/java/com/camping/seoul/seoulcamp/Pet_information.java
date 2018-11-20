@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import connectDB.NetworkTask_GetPet;
+import object.NowUser;
 import object.PetData;
 
 public class Pet_information extends AppCompatActivity {
@@ -77,5 +79,20 @@ public class Pet_information extends AppCompatActivity {
             setResult(RESULT_OK);
             finish();
         }
+        if (resultCode == RESULT_FIRST_USER) {
+            try {
+                PetData tmp = new NetworkTask_GetPet().execute(new PetData(NowUser.id, index.getName(), index.getBirth(), index.getKind(), index.getFlag(), index.getSex())).get();
+                txt_age.setText(Integer.toString(tmp.getAge()));
+                txt_weight.setText(Float.toString(tmp.getWeight()));
+                txt_inform.setText(tmp.getInform());
+                index.setInform(tmp.getInform());
+                index.setWeight(tmp.getWeight());
+                index.setAge(tmp.getAge());
+                setResult(RESULT_OK);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }
