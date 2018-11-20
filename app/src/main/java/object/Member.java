@@ -8,6 +8,7 @@ public class Member implements Serializable {
     private String password;
     private String nickname;
     private String tel;
+    private int flag;
 
     public Member(String id, String password) {
         this.id = id;
@@ -60,5 +61,13 @@ public class Member implements Serializable {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 }
