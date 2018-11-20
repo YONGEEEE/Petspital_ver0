@@ -37,6 +37,7 @@ public class NetworkTask_AddList extends AsyncTask<CommentItem, Void, Integer> {
         object.addProperty("star", voids[0].getStar());
         object.addProperty("password", voids[0].getPassword());
 
+
         json = gson.toJson(object);
 
         /*--------------*/
