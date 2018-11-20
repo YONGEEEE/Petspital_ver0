@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class CommentItem implements Parcelable {
     private int num;
-    private String camp;
+    private String petspital;
     private String id;
     private String name;
     private String text;
@@ -15,15 +15,16 @@ public class CommentItem implements Parcelable {
     private String regdate;
     private String password;
 
-    public CommentItem(String camp, String id, String text, double star) {
-        this.camp = camp;
+
+    public CommentItem(String petspital, String id, String text, double star) {
+        this.petspital = petspital;
         this.id = id;
         this.text = text;
         this.star = star;
     }
 
-    public CommentItem(String camp, String id, String text, double star, String password) {
-        this.camp = camp;
+    public CommentItem(String petspital, String id, String text, double star, String password) {
+        this.petspital = petspital;
         this.id = id;
         this.text = text;
         this.star = star;
@@ -38,12 +39,12 @@ public class CommentItem implements Parcelable {
         this.password = password;
     }
 
-    public String getCamp() {
-        return camp;
+    public String getPetspital() {
+        return petspital;
     }
 
-    public void setCamp(String camp) {
-        this.camp = camp;
+    public void setPetspital(String petspital) {
+        this.petspital = petspital;
     }
 
     public String getId() {
@@ -98,7 +99,7 @@ public class CommentItem implements Parcelable {
     public String toString() {
         return "CommentItem{" +
                 "num=" + num +
-                ", camp='" + camp + '\'' +
+                ", petspital='" + petspital + '\'' +
                 ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", text='" + text + '\'' +
@@ -114,7 +115,6 @@ public class CommentItem implements Parcelable {
         text = src.readString();
         star = src.readDouble();
         regdate = src.readString();
-        password = src.readString();
     }
 
     public static final Creator CREATOR = new Creator() {
@@ -139,6 +139,5 @@ public class CommentItem implements Parcelable {
         dest.writeString(text);
         dest.writeDouble(star);
         dest.writeString(regdate);
-        dest.writeString(password);
     }
 }

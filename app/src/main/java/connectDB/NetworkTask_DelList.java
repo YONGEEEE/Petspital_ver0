@@ -18,7 +18,7 @@ import okhttp3.Response;
 public class NetworkTask_DelList extends AsyncTask<CommentItem, Void, Integer> {
 
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    String url = "http://개인 /comment/delList";
+    String url = "http://192.168.0.6:8080/comment/delList";
     String json;
 
     @Override
@@ -26,7 +26,7 @@ public class NetworkTask_DelList extends AsyncTask<CommentItem, Void, Integer> {
         Gson gson = new Gson();
         JsonObject object = new JsonObject();
         object.addProperty("num", commentItems[0].getNum());
-        object.addProperty("password", commentItems[0].getPassword());
+        object.addProperty("id", commentItems[0].getId());
         json = gson.toJson(object);
         RequestBody body = RequestBody.create(JSON, json);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(1, TimeUnit.MINUTES)

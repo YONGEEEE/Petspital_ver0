@@ -18,8 +18,8 @@ public class
 NetworkTask_GetList extends AsyncTask<String, Void, List<CommentItem>> {
     @Override
     protected List<CommentItem> doInBackground(String... voids) {
-        String url = "http://개인 DB/comment/listAll";
-        String queryurl = url + "?camp=" + voids[0];
+        String url = "http://192.168.0.6:8080/comment/listAll";
+        String queryurl = url + "?petspital=" + voids[0];
         String bodyStr = "";
 
         OkHttpClient client = new OkHttpClient();

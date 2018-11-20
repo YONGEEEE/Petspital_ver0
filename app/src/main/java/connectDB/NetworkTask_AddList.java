@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import java.io.IOException;
 
 import listview.CommentItem;
+import object.NowUser;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -23,19 +24,18 @@ public class NetworkTask_AddList extends AsyncTask<CommentItem, Void, Integer> {
     @Override
     protected Integer doInBackground(CommentItem... voids) {
 
-        String url = "http://개인 DB /comment/addList";
+        String url = "http://192.168.0.6:8080/comment/addList";
         /* Tojson */
 
         String json;
 
         Gson gson = new Gson();
         JsonObject object = new JsonObject();
-        object.addProperty("camp", voids[0].getCamp());
+        object.addProperty("petspital", voids[0].getPetspital());
         object.addProperty("id", voids[0].getId());
-        object.addProperty("name", "test");
+        object.addProperty("name", NowUser.id);
         object.addProperty("text", voids[0].getText());
         object.addProperty("star", voids[0].getStar());
-        object.addProperty("password", voids[0].getPassword());
 
 
         json = gson.toJson(object);

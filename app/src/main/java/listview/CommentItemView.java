@@ -38,8 +38,8 @@ public class CommentItemView extends LinearLayout {
 
     }
 
-    public void setID(String name) {
-        txtName.setText(name);
+    public void setID(String id) {
+        txtName.setText(id);
     }
 
     public void setComment(String comment) {
