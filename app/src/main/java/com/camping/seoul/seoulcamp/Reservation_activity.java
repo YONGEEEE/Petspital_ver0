@@ -27,7 +27,7 @@ public class Reservation_activity extends AppCompatActivity {
     LinearLayout layout;
     int mYear, mMonth, mDay, mHour, mMinute;
 
-    TextView txt_select_day;
+    TextView txt_select_day,txt_petspital_name;
 
 
     @Override
@@ -57,7 +57,11 @@ public class Reservation_activity extends AppCompatActivity {
 
         layout = findViewById(R.id.layout_search);
         txt_select_day = findViewById(R.id.txt_select_day);
+        txt_petspital_name = findViewById(R.id.txt_petspital_name);
         button_select_day = findViewById(R.id.btn_select_day);
+
+        txt_petspital_name.setText(NowUser.petspital);
+
         button_select_day.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
