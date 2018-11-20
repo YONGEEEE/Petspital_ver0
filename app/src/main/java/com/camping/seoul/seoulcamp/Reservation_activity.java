@@ -40,6 +40,8 @@ public class Reservation_activity extends AppCompatActivity {
 
         //현재 날짜와 시간을 가져오기위한 Calendar 인스턴스 선언
 
+        NowUser.regdate="";
+
         Calendar cal = new GregorianCalendar();
 
         mYear = cal.get(Calendar.YEAR);
