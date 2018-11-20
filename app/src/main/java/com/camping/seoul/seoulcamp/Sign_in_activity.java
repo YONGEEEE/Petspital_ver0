@@ -41,6 +41,7 @@ public class Sign_in_activity extends AppCompatActivity {
                         Member tmp = new NetworkTask_signIn().execute(new Member(id, pw)).get();
                         if (tmp.getFlag() == 1) {
                             Intent i = new Intent(this, activity_myreservation.class);
+                            i.putExtra("name",tmp.getName());
                             startActivity(i);
                         } else if (tmp.getFlag() != 1 && !tmp.getId().equals(null) && !tmp.getName().equals(null) && !tmp.getNickname().equals(null) && !tmp.getPassword().equals(null) && !tmp.getTel().equals(null)) {
                             Intent i = new Intent(Sign_in_activity.this, Main_activity.class);
