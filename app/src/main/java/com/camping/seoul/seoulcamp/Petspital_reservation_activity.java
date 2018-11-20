@@ -8,6 +8,6 @@ public class Petspital_reservation_activity   extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reservation);
+        setContentView(R.layout.activity_myreservation);
     }
 }
