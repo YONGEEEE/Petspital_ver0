@@ -2,6 +2,8 @@ package com.camping.seoul.seoulcamp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -9,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -74,17 +77,13 @@ public class Main_activity extends AppCompatActivity {
         button_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replace_fragment(new NearByFragment());
-                layout.setVisibility(View.GONE); // 검색란
-                button_add.setVisibility(View.VISIBLE); // 추가
+                setMain();
             }
         });
         button_petspital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replace_fragment(new NearByFragment2());
-                layout.setVisibility(View.VISIBLE); // 검색란
-                button_add.setVisibility(View.GONE); // 추가
+                setPetspital();
             }
         });
 
@@ -96,7 +95,14 @@ public class Main_activity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-
+            Handler handler = new Handler(Looper.getMainLooper());
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    setMain();
+                }
+            },0);
+//            setMain();
         }
     }
 
@@ -127,5 +133,23 @@ public class Main_activity extends AppCompatActivity {
         public int getCount() {
             return items.size();
         }
+    }
+
+    public void setMain()
+    {
+        replace_fragment(new NearByFragment());
+        if(layout.getVisibility()==View.VISIBLE) {
+            layout.setVisibility(View.GONE); // 검색란
+        }
+        button_add.setVisibility(View.VISIBLE); // 추가
+    }
+
+    public void setPetspital()
+    {
+        replace_fragment(new NearByFragment2());
+        if(layout.getVisibility()==View.GONE) {
+            layout.setVisibility(View.VISIBLE); // 검색란
+        }
+        button_add.setVisibility(View.GONE); // 추가
     }
 }
