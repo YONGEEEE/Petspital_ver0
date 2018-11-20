@@ -41,6 +41,8 @@
         <activity android:name=".Main_activity"/>
         <activity android:name=".Reservation_activity"/>
         <activity android:name=".Add_pet_activity"/>
+        <activity android:name=".Petspital_reservation_activity"/>
+        <activity android:name=".My_reservation_activity"/>
     </application>
 
 
