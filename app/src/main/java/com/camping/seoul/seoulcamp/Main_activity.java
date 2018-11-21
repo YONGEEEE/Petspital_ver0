@@ -118,11 +118,10 @@ public class Main_activity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-
                     setMain();
                 }
             }, 500);
-//            setMain();
+
         }
         if (resultCode == RESULT_OK && requestCode == 2) {
             Handler handler = new Handler(Looper.getMainLooper());
