@@ -95,20 +95,39 @@ public class Main_activity extends AppCompatActivity {
         getReservation();
         button_reservation.setText(reservation.get(0).getPetspital()+" "+reservation.get(0).getRegdate()+"진료예정");
 
+        button_reservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Main_activity.this,My_reservation_activity.class);
+                startActivityForResult(i,2);
+            }
+        });
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
+        if (resultCode == RESULT_OK && requestCode == 1) {
             Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
+
                     setMain();
                 }
             }, 0);
 //            setMain();
+        }
+        if(resultCode==RESULT_OK && requestCode==2)
+        {
+            Handler handler = new Handler(Looper.getMainLooper());
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    getReservation();
+                    button_reservation.setText(reservation.get(0).getPetspital()+" "+reservation.get(0).getRegdate()+"진료예정");
+                }
+            }, 0);
         }
     }
 
