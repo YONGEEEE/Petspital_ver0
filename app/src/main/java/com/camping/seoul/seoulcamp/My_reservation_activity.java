@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class My_reservation_activity extends AppCompatActivity {
     ListView listView;
     Button showAllButton;
     List<Reservation> list;
+    TextView txt_nickname;
 
     ReservationAdapter adapter;
 
@@ -42,11 +44,9 @@ public class My_reservation_activity extends AppCompatActivity {
 
         listView = findViewById(R.id.listView);
         showAllButton = findViewById(R.id.btnShowAll);
-
-        Log.d("aaaaaaaaaaa1","aaaaaaaaaaaaaaa1");
+        txt_nickname = findViewById(R.id.txt_nickname);
+        txt_nickname.setText(NowUser.nickname);
         adapter = new ReservationAdapter();
-
-        Log.d("aaaaaaaaaaa2","aaaaaaaaaaaaaaa2");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) { // 토스트 메세지 ( 리스트 뷰 클릭시 )

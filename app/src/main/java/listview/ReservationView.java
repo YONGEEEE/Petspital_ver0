@@ -27,7 +27,7 @@ public class ReservationView  extends LinearLayout {
 
     public void init(final Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.item_commnet, this, true);
+        inflater.inflate(R.layout.item_reservation, this, true);
 
         txt_name = (TextView) findViewById(R.id.txt_name);
         txt_petspital_name = (TextView) findViewById(R.id.txt_petspital_name);
