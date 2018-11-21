@@ -10,32 +10,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="#ffffff"
         >
         <customfonts.MyTextView_Roboto_Medium
-            android:id="@+id/txt_petspital_name"
+            android:id="@+id/txt_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="5dp"
             android:textSize="20sp"
             android:textColor="#000000"
-            android:text="병원이름"/>
+            android:text="이름"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <customfonts.MyTextView_Roboto_Medium
-                android:id="@+id/txt_name"
+                android:id="@+id/txt_petspital_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="이름"
+                android:text="병원이름"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <customfonts.MyTextView_Roboto_Medium
                 android:id="@+id/txt_regdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,6 +44,15 @@
                 android:gravity="center"
                 android:textSize="16sp"
                 android:text="날짜"/>
+
+            <customfonts.MyTextView_Roboto_Medium
+                android:id="@+id/txt_user_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:text="유저이름"
+                android:textSize="16sp"/>
         </LinearLayout>
 
 

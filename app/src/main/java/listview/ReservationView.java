@@ -12,6 +12,7 @@ public class ReservationView  extends LinearLayout {
     TextView txt_petspital_name;
     TextView txt_regdate;
     TextView txt_name;
+    TextView txt_user_id;
 
     public ReservationView(Context context) {
         super(context);
@@ -32,6 +33,8 @@ public class ReservationView  extends LinearLayout {
         txt_name = (TextView) findViewById(R.id.txt_name);
         txt_petspital_name = (TextView) findViewById(R.id.txt_petspital_name);
         txt_regdate = (TextView) findViewById(R.id.txt_regdate);
+        txt_user_id = findViewById(R.id.txt_user_id);
+
 
     }
 
@@ -46,6 +49,8 @@ public class ReservationView  extends LinearLayout {
     public void setTxt_name(String name) {
         txt_name.setText(name);
     }
+
+    public void setTxt_user_id(String user_id) { txt_user_id.setText(user_id);}
 
 
 }

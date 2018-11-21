@@ -33,11 +33,12 @@ import weather.WeatherInfo2;
 
 public class Main_activity extends AppCompatActivity {
     FrameLayout frameLayout;
-    Button button_main, button_petspital, button_add , button_reservation;
+    Button button_main, button_petspital, button_add, button_reservation;
     LinearLayout layout;
     TextView txt_nickname;
 
     List<Reservation> reservation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,13 +94,18 @@ public class Main_activity extends AppCompatActivity {
         });
 
         getReservation();
-        button_reservation.setText(reservation.get(0).getPetspital()+" "+reservation.get(0).getRegdate()+"진료예정");
+        if (!reservation.isEmpty()) {
+            button_reservation.setText(reservation.get(0).getPetspital() + " " + reservation.get(0).getRegdate() + "진료예정");
+        }
+        else{
+            button_reservation.setText("예정 없음");
+        }
 
         button_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Main_activity.this,My_reservation_activity.class);
-                startActivityForResult(i,2);
+                Intent i = new Intent(Main_activity.this, My_reservation_activity.class);
+                startActivityForResult(i, 2);
             }
         });
     }
@@ -118,14 +124,18 @@ public class Main_activity extends AppCompatActivity {
             }, 0);
 //            setMain();
         }
-        if(resultCode==RESULT_OK && requestCode==2)
-        {
+        if (resultCode == RESULT_OK && requestCode == 2) {
             Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     getReservation();
-                    button_reservation.setText(reservation.get(0).getPetspital()+" "+reservation.get(0).getRegdate()+"진료예정");
+                    if (!reservation.isEmpty()) {
+                        button_reservation.setText(reservation.get(0).getPetspital() + " " + reservation.get(0).getRegdate() + "진료예정");
+                    }
+                    else{
+                        button_reservation.setText("예정 없음");
+                    }
                 }
             }, 0);
         }
@@ -175,11 +185,10 @@ public class Main_activity extends AppCompatActivity {
         button_add.setVisibility(View.GONE); // 추가
     }
 
-    public void getReservation()
-    {
-        try{
+    public void getReservation() {
+        try {
             reservation = new NetworkTask_getReservationList().execute(NowUser.id).get();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

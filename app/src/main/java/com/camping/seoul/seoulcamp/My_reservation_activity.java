@@ -33,7 +33,7 @@ public class My_reservation_activity extends AppCompatActivity {
     ListView listView;
     Button showAllButton;
     List<Reservation> list;
-    TextView txt_nickname;
+    TextView txt_nickname, txt_user_id;
 
     ReservationAdapter adapter;
 
@@ -45,6 +45,7 @@ public class My_reservation_activity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         showAllButton = findViewById(R.id.btnShowAll);
         txt_nickname = findViewById(R.id.txt_nickname);
+
         txt_nickname.setText(NowUser.nickname);
         adapter = new ReservationAdapter();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -185,6 +186,7 @@ public class My_reservation_activity extends AppCompatActivity {
             view.setTxt_name(item.getName());
             view.setTxt_petspital_name(item.getPetspital());
             view.setTxt_regdate(item.getRegdate());
+            view.setTxt_user_id("");
             return view;
         }
 
