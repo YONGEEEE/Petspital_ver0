@@ -62,21 +62,8 @@ public class NearByFragment extends Fragment {
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_property);
-        CampdataArrayList = new ArrayList<>();
 
-
-        for (int i = 0; i < tmp.size(); i++) {
-            PetData beanClassForRecyclerView_contacts = tmp.get(i);
-            CampdataArrayList.add(beanClassForRecyclerView_contacts);
-        }
-
-
-        mAdapter = new RecycleAdapter_petlist(getActivity(), CampdataArrayList);
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        startFragment();
 
 
         return view;
@@ -173,21 +160,7 @@ public class NearByFragment extends Fragment {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    CampdataArrayList = new ArrayList<>();
-
-
-                    for (int i = 0; i < tmp.size(); i++) {
-                        PetData beanClassForRecyclerView_contacts = tmp.get(i);
-                        CampdataArrayList.add(beanClassForRecyclerView_contacts);
-                    }
-
-
-                    mAdapter = new RecycleAdapter_petlist(getActivity(), CampdataArrayList);
-
-                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-                    recyclerView.setLayoutManager(mLayoutManager);
-                    recyclerView.setItemAnimator(new DefaultItemAnimator());
-                    recyclerView.setAdapter(mAdapter);
+                    startFragment();
                 }
             }, 500);
 
@@ -195,5 +168,23 @@ public class NearByFragment extends Fragment {
 
     }
 
+    public void startFragment()
+    {
+        CampdataArrayList = new ArrayList<>();
+
+
+        for (int i = 0; i < tmp.size(); i++) {
+            PetData beanClassForRecyclerView_contacts = tmp.get(i);
+            CampdataArrayList.add(beanClassForRecyclerView_contacts);
+        }
+
+
+        mAdapter = new RecycleAdapter_petlist(getActivity(), CampdataArrayList);
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+    }
 
 }
