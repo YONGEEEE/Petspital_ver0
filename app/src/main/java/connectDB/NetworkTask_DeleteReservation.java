@@ -1,6 +1,7 @@
 package connectDB;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -44,7 +45,7 @@ public class NetworkTask_DeleteReservation extends AsyncTask<Reservation, Void, 
         object.addProperty("flag", voids[0].getFlag());
         object.addProperty("sex", voids[0].getSex());
         json = gson.toJson(object);
-
+        Log.d("Reservation==",voids[0].toString());
         /*--------------*/
 
         OkHttpClient okHttpClient = new OkHttpClient();

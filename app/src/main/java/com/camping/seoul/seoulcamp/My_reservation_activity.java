@@ -77,7 +77,7 @@ public class My_reservation_activity extends AppCompatActivity {
     }
 
     public void show(final Reservation reservation) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext(), R.style.MyDialogStyle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyDialogStyle);
         builder.setTitle("예약취소");
         builder.setMessage("예약취소 하시겠습니까?");
 
@@ -85,7 +85,7 @@ public class My_reservation_activity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {//수정필요
                 int result;
-                Reservation tmp = new Reservation(NowUser.petspital, NowUser.regdate, reservation.getUserid(), reservation.getName(), reservation.getAge(), reservation.getWeight(), reservation.getBirth(), reservation.getInform(), reservation.getKind(), reservation.getFlag(), reservation.getSex());
+                Reservation tmp = new Reservation(reservation.getPetspital(),reservation.getRegdate(), reservation.getUserid(), reservation.getName(), reservation.getAge(), reservation.getWeight(), reservation.getBirth(), reservation.getInform(), reservation.getKind(), reservation.getFlag(), reservation.getSex());
                 try {
                     result = new NetworkTask_DeleteReservation().execute(tmp).get();
                     if (result == 1) {
@@ -175,6 +175,7 @@ public class My_reservation_activity extends AppCompatActivity {
 
         }
 
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ReservationView view = new ReservationView(getApplicationContext());
@@ -227,6 +228,9 @@ public class My_reservation_activity extends AppCompatActivity {
     }
 
 
-
-
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_OK);
+        super.onBackPressed();
+    }
 }
