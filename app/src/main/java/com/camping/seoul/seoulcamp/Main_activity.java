@@ -121,7 +121,7 @@ public class Main_activity extends AppCompatActivity {
 
                     setMain();
                 }
-            }, 0);
+            }, 500);
 //            setMain();
         }
         if (resultCode == RESULT_OK && requestCode == 2) {
@@ -137,7 +137,7 @@ public class Main_activity extends AppCompatActivity {
                         button_reservation.setText("예정 없음");
                     }
                 }
-            }, 0);
+            }, 500);
         }
     }
 
@@ -192,4 +192,6 @@ public class Main_activity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+
 }

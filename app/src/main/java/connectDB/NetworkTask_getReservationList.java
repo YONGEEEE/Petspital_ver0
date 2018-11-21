@@ -18,7 +18,7 @@ import okhttp3.Response;
 public class NetworkTask_getReservationList extends AsyncTask<String, Void, List<Reservation>> {
     @Override
     protected List<Reservation> doInBackground(String... voids) {
-        String url = "http://192.168.0.6:8080/reservation/getReservationList";
+        String url = "http://203.253.255.113:9090/reservation/getReservationList";
         String queryurl = url + "?userid=" + voids[0];
         String bodyStr = "";
 

@@ -18,7 +18,7 @@ import okhttp3.Response;
 public class NetworkTask_getPetspitalReservationList extends AsyncTask<String, Void, List<Reservation>> {
     @Override
     protected List<Reservation> doInBackground(String... voids) {
-        String url = "http://192.168.0.6:8080/reservation/getPetspitalReservationList";
+        String url = "http://203.253.255.113:9090/reservation/getPetspitalReservationList";
         String queryurl = url + "?petspital=" + voids[0];
         String bodyStr = "";
 

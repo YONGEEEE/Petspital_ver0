@@ -23,7 +23,7 @@ public class NetworkTask_insertReservation extends AsyncTask<Reservation, Void, 
     @Override
     protected Integer doInBackground(Reservation... voids) {
 
-        String url = "http://192.168.0.6:8080/reservation/insertReservation";
+        String url = "http://203.253.255.113:9090/reservation/insertReservation";
         /* Tojson */
 
         String json;

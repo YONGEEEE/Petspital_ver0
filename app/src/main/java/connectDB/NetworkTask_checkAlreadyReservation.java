@@ -22,7 +22,7 @@ public class NetworkTask_checkAlreadyReservation extends AsyncTask<Reservation, 
 
     @Override
     protected Integer doInBackground(Reservation... voids) {
-        String url = "http://192.168.0.6:8080/reservation/checkAlreadyReservation";
+        String url = "http://203.253.255.113:9090/reservation/checkAlreadyReservation";
         String bodyStr = "";
         int result = 10;
         String json;

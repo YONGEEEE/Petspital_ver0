@@ -24,7 +24,7 @@ public class NetworkTask_DeletePet extends AsyncTask<PetData, Void, Integer> {
     @Override
     protected Integer doInBackground(PetData... voids) {
 
-        String url = "http://192.168.0.6:8080/Pet/DeletePet";
+        String url = "http://203.253.255.113:9090/Pet/DeletePet";
         /* Tojson */
 
         String json;

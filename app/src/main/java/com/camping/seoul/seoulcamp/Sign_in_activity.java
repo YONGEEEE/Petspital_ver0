@@ -39,22 +39,28 @@ public class Sign_in_activity extends AppCompatActivity {
                 } else {
                     try {
                         Member tmp = new NetworkTask_signIn().execute(new Member(id, pw)).get();
-                        if (tmp.getFlag() == 1) {
-                            Intent i = new Intent(Sign_in_activity.this, Petspital_reservation_activity.class);
-                            i.putExtra("name",tmp.getName());
-                            startActivity(i);
-                        } else if (tmp.getFlag() != 1 && !tmp.getId().equals(null) && !tmp.getName().equals(null) && !tmp.getNickname().equals(null) && !tmp.getPassword().equals(null) && !tmp.getTel().equals(null)) {
-                            Intent i = new Intent(Sign_in_activity.this, Main_activity.class);
-                            //회원정보 객체 같이 보내기
-                            NowUser.id = tmp.getId();
-                            NowUser.name = tmp.getName();
-                            NowUser.nickname = tmp.getNickname();
-                            NowUser.password = tmp.getPassword();
-                            NowUser.tel = tmp.getTel();
+                        if (tmp != null) {
+                            if (tmp.getFlag() == 1) {
+                                Intent i = new Intent(Sign_in_activity.this, Petspital_reservation_activity.class);
+                                i.putExtra("name", tmp.getName());
+                                startActivity(i);
+                            } else if (tmp.getFlag() != 1 && !tmp.getId().equals(null) && !tmp.getName().equals(null) && !tmp.getNickname().equals(null) && !tmp.getPassword().equals(null) && !tmp.getTel().equals(null)) {
+                                Intent i = new Intent(Sign_in_activity.this, Main_activity.class);
+                                //회원정보 객체 같이 보내기
+                                NowUser.id = tmp.getId();
+                                NowUser.name = tmp.getName();
+                                NowUser.nickname = tmp.getNickname();
+                                NowUser.password = tmp.getPassword();
+                                NowUser.tel = tmp.getTel();
 //                            i.putExtra("index",  tmp);//parsing test
-                            startActivity(i);
+                                startActivity(i);
+                            }
                         }
-                    } catch (Exception e) {
+                        else
+                        {
+                            Toast.makeText(Sign_in_activity.this, "정보가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                        }
+                        }catch(Exception e){
                         e.printStackTrace();
                     }
                 }
@@ -69,38 +75,6 @@ public class Sign_in_activity extends AppCompatActivity {
             }
         });
 
-        //        btnWriteComment.setOnClickListener(new View.OnClickListener() { // 작성하기 버튼 클릭시 이벤트
-//            @Override
-//            public void onClick(View view) {
-//                String id;
-//                String text;
-//                float star;
-//                String type;
-//                String pw;
-//                if (editComment.getText().toString().length() == 0) {
-//                    Toast.makeText(Camp_detail.this, "내용을 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
-//                } else if (password.getText().toString().length() == 0) {
-//                    Toast.makeText(Camp_detail.this, "비밀번호를 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-//                } else if (password.getText().toString().length() < 4) {
-//                    Toast.makeText(Camp_detail.this, "4자리 비밀번호를 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    WifiManager mwifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-//                    WifiInfo info = mwifi.getConnectionInfo();
-//                    id = info.getMacAddress(); // 핸드폰 맥주소 가져오기
-//                    text = editComment.getText().toString();
-//                    star = ratingBar.getRating();
-//                    type = index.getId();
-//                    pw = password.getText().toString();
-//                    password.setText(null);
-//                    editComment.setText(null);
-//                    try {
-//                        new NetworkTask_AddList().execute(new CommentItem(type, id, text, star, pw));
-//                        setList();
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        });
+
     }
 }

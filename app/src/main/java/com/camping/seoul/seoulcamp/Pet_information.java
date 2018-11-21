@@ -2,6 +2,10 @@ package com.camping.seoul.seoulcamp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import connectDB.NetworkTask_GetPet;
+import fragment.NearByFragment;
 import object.NowUser;
 import object.PetData;
 
@@ -29,7 +34,6 @@ public class Pet_information extends AppCompatActivity {
         Intent i = getIntent();
         index = (PetData) i.getSerializableExtra("index");//parsing test
 
-        Log.d("aaaaa", index.toString());
         txt_name = findViewById(R.id.txt_name);
         txt_birth = findViewById(R.id.txt_birth);
         txt_weight = findViewById(R.id.txt_weight);
@@ -95,4 +99,5 @@ public class Pet_information extends AppCompatActivity {
         }
 
     }
+
 }

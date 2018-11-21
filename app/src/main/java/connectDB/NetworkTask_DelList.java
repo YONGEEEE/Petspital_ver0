@@ -18,7 +18,7 @@ import okhttp3.Response;
 public class NetworkTask_DelList extends AsyncTask<CommentItem, Void, Integer> {
 
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    String url = "http://192.168.0.6:8080/comment/delList";
+    String url = "http://203.253.255.113:9090/comment/delList";
     String json;
 
     @Override
