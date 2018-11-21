@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import adapter.RecycleAdapter_petlist;
 import adapter.RecycleAdapter_reservationpetlist;
 import connectDB.NetworkTask_GetPetList;
 import object.NowUser;
