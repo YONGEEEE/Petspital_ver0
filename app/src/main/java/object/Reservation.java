@@ -1,6 +1,11 @@
 package object;
 
-public class Reservation {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import listview.CommentItem;
+
+public class Reservation implements Parcelable {
     private int num;
     private String petspital;
     private String regdate;
@@ -148,6 +153,53 @@ public class Reservation {
                 ", flag=" + flag +
                 ", sex=" + sex +
                 '}';
+    }
+
+
+    public Reservation(Parcel src) {
+        num = src.readInt();
+        this.petspital = src.readString();
+        this.regdate = src.readString();
+        this.userid = src.readString();
+        this.name = src.readString();
+        this.age = src.readInt();
+        this.weight = src.readFloat();
+        this.birth = src.readString();
+        this.inform = src.readString();
+        this.kind = src.readString();
+        this.flag = src.readInt();
+        this.sex = src.readInt();
+    }
+
+    public static final Creator CREATOR = new Creator() {
+        public Reservation createFromParcel(Parcel src) {
+            return new Reservation(src);
+        }
+
+        public Reservation[] newArray(int size) {
+            return new Reservation[size];
+        }
+    };
+
+    @Override
+    public int describeContents() { // 필수 오버라이드
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) { // 필수 오버라이드
+        dest.writeInt(num);
+        dest.writeString(name);
+        dest.writeString(regdate);
+        dest.writeString(petspital);
+        dest.writeString(userid);
+        dest.writeFloat(weight);
+        dest.writeInt(age);
+        dest.writeInt(flag);
+        dest.writeInt(sex);
+        dest.writeString(birth);
+        dest.writeString(inform);
+        dest.writeString(kind);
     }
 }
 
