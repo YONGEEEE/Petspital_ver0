@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:hint="몸무게를 입력하세요"
-                android:inputType="numberSigned" />
+                android:inputType="numberDecimal" />
         </LinearLayout>
 
         <LinearLayout
