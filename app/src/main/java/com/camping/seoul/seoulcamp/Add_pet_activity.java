@@ -17,7 +17,7 @@ import object.PetData;
 public class Add_pet_activity extends AppCompatActivity {
 
     EditText edit_name, edit_age, edit_weight, edit_birth, edit_inform, edit_kind;
-    //    CheckBox check_dog , check_cat , check_male , check_female;
+
     RadioButton rbtn_dog, rbtn_cat, rbtn_male, rbtn_female;
 
     Button btn_create, btn_cancel;
@@ -38,11 +38,7 @@ public class Add_pet_activity extends AppCompatActivity {
         edit_inform = findViewById(R.id.edit_inform);
         edit_kind = findViewById(R.id.edit_kind);
 
-//        check_dog = findViewById(R.id.check_dog);
-//        check_cat = findViewById(R.id.check_cat);
-//
-//        check_male = findViewById(R.id.check_male);
-//        check_female = findViewById(R.id.check_female);
+
 
         rbtn_dog = findViewById(R.id.rbtn_dog);
         rbtn_cat = findViewById(R.id.rbtn_cat);
@@ -63,30 +59,6 @@ public class Add_pet_activity extends AppCompatActivity {
                 String birth = edit_birth.getText().toString();
                 String inform = edit_inform.getText().toString();
                 String kind = edit_kind.getText().toString();
-
-//                if(check_dog.isChecked()&&!check_cat.isChecked())
-//                {
-//                    flag = 1;
-//                }
-//                else if(check_cat.isChecked()&&!check_dog.isChecked())
-//                {
-//                    flag = 0;
-//                }
-//                else{
-//                    Toast.makeText(Add_pet_activity.this, "개냐 고양이냐", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                if(check_male.isChecked()&&!check_female.isChecked())
-//                {
-//                    sex = 1;
-//                }
-//                else if(check_female.isChecked()&&!check_male.isChecked())
-//                {
-//                    sex = 0;
-//                }
-//                else{
-//                    Toast.makeText(Add_pet_activity.this, "남자냐 여자냐", Toast.LENGTH_SHORT).show();
-//                }
 
                 if (name.length() == 0) {
                     Toast.makeText(Add_pet_activity.this, "이름을 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
