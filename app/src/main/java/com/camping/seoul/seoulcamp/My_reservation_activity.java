@@ -49,7 +49,7 @@ public class My_reservation_activity extends AppCompatActivity {
         showAllButton = findViewById(R.id.btnShowAll);
         txt_nickname = findViewById(R.id.txt_nickname);
 
-        txt_nickname.setText(NowUser.nickname);
+        txt_nickname.setText(NowUser.nickname+" 님의 예약현황");
         adapter = new ReservationAdapter();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

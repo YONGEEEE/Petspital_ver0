@@ -15,6 +15,7 @@
             android:id="@+id/txt_nickname"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:text="000님" />
 
